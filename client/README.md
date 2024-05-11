@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 When running together with the server on development, please run this on port http://localhost:3001/
 
+When searching for icons, go to https://react-icons.github.io/react-icons/
+
 ## Available Scripts
 
 In the project directory, you can run:
