@@ -1,12 +1,13 @@
 .nav_bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: absolute;
     background-color: var(--primary-green);
     height: 100vh;
     width: 12ch;
     z-index: 10;
     border-radius:  0 5ch 5ch 0;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     padding-right: 1ch;
 }
@@ -22,4 +23,23 @@
 
 .nav_bar-button{
     padding: 1ch;
+    display: flex;
+}
+
+.nav_bar-selected{
+    position: absolute;
+    left: 25px;
+    width: 3px;
+    height: 5ch;
+    background-color: white;
+}
+
+.nav_bar-label{
+    font-family: recoleta;
+    color: white;
+    padding-bottom: 5ch;
+}
+
+.nav_bar-title{
+    font-size: 2rem;
 }
