@@ -1,2 +1,2 @@
-export const iconSize = "5ch"
+export const iconSize = "4ch"
 export const iconColor = "white"

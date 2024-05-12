@@ -14,12 +14,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1{
+  font-family: recoleta;
+  font-size: 28px;
+  margin: 0;
+}
+
 ul{
   padding: 0;
 }
 
 li {
   list-style: none;
+}
+
+a{
+  text-decoration: none;
 }
 
 
@@ -34,6 +44,6 @@ li {
 }
 
 .page{
-  padding: 1rem;
+  padding: 3em;
 }
 

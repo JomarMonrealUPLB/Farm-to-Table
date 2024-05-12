@@ -44,10 +44,12 @@ const NavBar = () => {
             })
           }
         </ul>
-        <div className='nav_bar-label'>
-          <div className='nav_bar-title'>F2T</div>
-          <div>@2024</div>
-        </div>
+        <Link to={"/"}>
+          <div className='nav_bar-label'>
+            <div className='nav_bar-title'>F2T</div>
+            <div>@2024</div>
+          </div>
+        </Link>
       </div>
     </>
   )
