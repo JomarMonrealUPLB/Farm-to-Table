@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import "./NavBar.css"
 
@@ -16,6 +16,8 @@ const NavBar = () => {
     {path : "/profile", icon: <PiUserCircleLight color={iconColor} size={iconSize} />},
   ]
 
+  const [selectedIndex, setselectedIndex] = useState(0)
+
 
   return (
     <>
@@ -31,25 +33,10 @@ const NavBar = () => {
                     id={"nav_bar-button-" + index}
                     className='nav_bar-button'
                     onClick={(e) => {
-
-                      const buttons= document.querySelectorAll(`.nav_bar-button`)
-                      for (const key in buttons) {
-                        const button = buttons[key];
-                        if(button===null) break
-                        if(button.id === ("nav_bar-button-" + index)){
-                          button.children[0].className="nav_bar-selected"
-                        } else{
-                          try{
-                            button.children[0].className="nav_bar-selected no_display"
-                          } catch{
-                            console.log("Button null")
-                          }
-                        }
-                      }
-                      
+                      setselectedIndex(index)
                     }}
                   >
-                   <div id={"nav_bar-selected-" + index} className='nav_bar-selected'></div>
+                   <div id={"nav_bar-selected-" + index} className={selectedIndex === index? "nav_bar-selected": "nav_bar-selected no_display"}></div>
                    {navBarItem.icon}
                   </li>
                 </Link>
