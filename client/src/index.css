@@ -1,0 +1,49 @@
+:root{
+  --primary-green: #4F6F52;
+}
+
+@font-face {
+  font-family: recoleta;
+  src: url("assets/fonts/Recoleta-RegularDEMO.otf") format("opentype");
+  }
+
+body {
+  margin: 0;
+  font-family: "Montserrat",sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1{
+  font-family: recoleta;
+  font-size: 28px;
+  margin: 0;
+}
+
+ul{
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+.no_display{
+  display: none;
+}
+
+
+
+.web_body{
+  display: flex;
+}
+
+.page{
+  padding: 3em;
+}
+
