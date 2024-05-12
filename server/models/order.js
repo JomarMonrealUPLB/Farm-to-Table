@@ -4,5 +4,4 @@ const Order = mongoose.model('orders',{
     status: Number,
     email: String,
     date: String,
-    time: String
 });
