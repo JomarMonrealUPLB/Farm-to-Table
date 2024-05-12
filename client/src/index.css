@@ -1,5 +1,6 @@
 :root{
   --primary-green: #4F6F52;
+  --primary-background: #F5EFE6;
 }
 
 @font-face {
@@ -10,6 +11,7 @@
 body {
   margin: 0;
   font-family: "Montserrat",sans-serif;
+  background-color: var(--primary-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -45,5 +47,6 @@ a{
 
 .page{
   padding: 3em;
+  width: 100%;
 }
 
