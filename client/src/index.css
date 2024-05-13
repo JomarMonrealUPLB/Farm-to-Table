@@ -12,6 +12,7 @@
 
 body {
   margin: 0;
+  font-size: 14px;
   font-family: "Montserrat",sans-serif;
   background-color: var(--primary-background);
   -webkit-font-smoothing: antialiased;
@@ -42,7 +43,10 @@ a{
   display: none;
 }
 
-
+hr{
+  border-width: 1px;
+  border-color: var(--primary-green-dark);
+}
 
 .web_body{
   display: flex;
