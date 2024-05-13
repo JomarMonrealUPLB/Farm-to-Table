@@ -1,6 +1,8 @@
 :root{
   --primary-green: #4F6F52;
+  --primary-green-dark: #1A4D2E;
   --primary-background: #F5EFE6;
+  --secondary-background: #E8DFCA;
 }
 
 @font-face {
@@ -20,6 +22,7 @@ h1{
   font-family: recoleta;
   font-size: 28px;
   margin: 0;
+  color: var(--primary-green-dark);
 }
 
 ul{
