@@ -1,0 +1,17 @@
+.search_box{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: white;
+    width: 20ch;
+    border-radius: 20ch;
+    margin: 0.5rem 0;
+}
+
+.search_box_input{
+    border: none;
+}
+
+.search_box_input:focus{
+    outline: none;
+}

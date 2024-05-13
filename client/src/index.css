@@ -1,8 +1,12 @@
 :root{
   --primary-green: #4F6F52;
+  --primary-green-hover: #234d28;
   --primary-green-dark: #1A4D2E;
+  --primary-green-dark-hover: #052512;
   --primary-background: #F5EFE6;
   --secondary-background: #E8DFCA;
+  --secondary-red: #A81D44;
+  --secondary-red-hover: #5c1126;
 }
 
 @font-face {
@@ -57,3 +61,20 @@ hr{
   width: 100%;
 }
 
+button{
+  color: white;
+  background-color: var(--primary-green-dark);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 1ch;
+  cursor: pointer;
+}
+
+
+.page_background_decor{
+  position: fixed;
+  z-index: -100;
+  bottom: -20%;
+  width: 100%;
+}
