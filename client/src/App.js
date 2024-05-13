@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup"
 import AdminHomePage from "./pages/AdminHomePage"
 import CustomerHomePage from "./pages/CustomerHomePage"
+import ShoppingPage from "./pages/ShoppingPage";
 import AccountManagement from "./pages/AccountManagement";
 import background from "./assets/images/background.png"
 
@@ -20,6 +21,7 @@ const App  =() =>{
               <Route path="/login" element={<Login/>} />
               <Route path="/admin-homepage" element={<AdminHomePage/>} />
               <Route path="/customer-homepage" element={<CustomerHomePage/>} />
+              <Route path="/shopping-page" element={<ShoppingPage/>} />
               <Route path="/account-management" element={<AccountManagement/>} />
               <Route path="*" element={<NoPage/>} />
           </Routes>

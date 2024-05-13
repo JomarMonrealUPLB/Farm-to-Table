@@ -13,7 +13,7 @@ import { iconColor, iconSize } from '../constants/IconSize';
 const NavBar = () => {
   const navBarItems = [
     {path : "/", icon: <LiaHomeSolid color={iconColor} size={iconSize}/>},
-    {path : "/shopping", icon: <LiaShoppingBagSolid color={iconColor} size={iconSize}/>},
+    {path : "/shopping-page", icon: <LiaShoppingBagSolid color={iconColor} size={iconSize}/>},
     {path : "/profile", icon: <PiUserCircleLight color={iconColor} size={iconSize} />},
     {path : "/account-management", icon: <MdOutlineManageAccounts color={iconColor} size={iconSize} />},
   ]

@@ -3,6 +3,7 @@ import SearchBox from '../components/SearchBox'
 import DropDown1 from '../components/DropDown1'
 import {users} from "../assets/dummy_data/users"
 import DataTable from '../components/DataTable'
+import Header from '../components/Header'
 
 const AccountManagement = () => {
     const [userList, setuserList] = useState(users)
@@ -47,7 +48,7 @@ const AccountManagement = () => {
 
     return (
     <div className='account_management page'>
-        <h1>Account Management</h1>
+        <Header headerTitle={"Account Management"}/>
         <SearchBox placeholder="Find User"/>
 
         <hr/>
