@@ -1,0 +1,21 @@
+.data_table{
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.912);
+}
+
+.data_table th{
+    background-color: var(--primary-green);
+    color: white;
+    padding: 1ch;
+}
+
+.data_table tr{
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--primary-green);
+}
+.data_table td{
+    padding: 1ch;
+}
