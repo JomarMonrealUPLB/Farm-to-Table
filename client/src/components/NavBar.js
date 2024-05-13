@@ -5,6 +5,7 @@ import "./NavBar.css"
 import { LiaHomeSolid } from "react-icons/lia";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { PiUserCircleLight } from "react-icons/pi";
+import { MdOutlineManageAccounts } from "react-icons/md";
 import { iconColor, iconSize } from '../constants/IconSize';
 
 
@@ -14,6 +15,7 @@ const NavBar = () => {
     {path : "/", icon: <LiaHomeSolid color={iconColor} size={iconSize}/>},
     {path : "/shopping", icon: <LiaShoppingBagSolid color={iconColor} size={iconSize}/>},
     {path : "/profile", icon: <PiUserCircleLight color={iconColor} size={iconSize} />},
+    {path : "/account-management", icon: <MdOutlineManageAccounts color={iconColor} size={iconSize} />},
   ]
 
   const [selectedIndex, setselectedIndex] = useState(0)

@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup"
 import AdminHomePage from "./pages/AdminHomePage"
 import CustomerHomePage from "./pages/CustomerHomePage"
+import AccountManagement from "./pages/AccountManagement";
+import background from "./assets/images/background.png"
 
 const App  =() =>{
   return (
@@ -18,8 +20,10 @@ const App  =() =>{
               <Route path="/login" element={<Login/>} />
               <Route path="/admin-homepage" element={<AdminHomePage/>} />
               <Route path="/customer-homepage" element={<CustomerHomePage/>} />
+              <Route path="/account-management" element={<AccountManagement/>} />
               <Route path="*" element={<NoPage/>} />
           </Routes>
+          <img className="page_background_decor" src={background}/>
         </div>
     </BrowserRouter>
     </div>
