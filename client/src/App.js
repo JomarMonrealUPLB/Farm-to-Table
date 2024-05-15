@@ -8,6 +8,7 @@ import CustomerHomePage from "./pages/CustomerHomePage"
 import ShoppingPage from "./pages/ShoppingPage";
 import AccountManagement from "./pages/AccountManagement";
 import background from "./assets/images/background.png"
+import Messenger from "./pages/Messenger";
 
 const App  =() =>{
   return (
@@ -23,7 +24,7 @@ const App  =() =>{
               <Route path="/customer-homepage" element={<CustomerHomePage/>} />
               <Route path="/shopping-page" element={<ShoppingPage/>} />
               <Route path="/account-management" element={<AccountManagement/>} />
-              <Route path="*" element={<NoPage/>} />
+              <Route path="*" element={<Messenger/>} />
           </Routes>
           <img className="page_background_decor" src={background}/>
         </div>
