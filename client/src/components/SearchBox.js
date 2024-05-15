@@ -7,7 +7,7 @@ const SearchBox = props => {
 
     return <div className='search_box'>
         <input type='text' className='search_box_input' placeholder={placeholder} />
-        <FaSearch />
+        <FaSearch color="var(--primary-green-dark)"/>
     </div>;
 }
 
