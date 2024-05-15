@@ -1,0 +1,23 @@
+.login_page-container{
+    display: flex;
+    height: auto;
+
+}
+
+.login_page-card{
+    width: 50%;
+
+}
+.login_page-main{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: var(--primary-background);
+
+}
+
+.login_page-main h1{
+    font-size: 45px;
+    font-weight: bolder;
+
+}
