@@ -12,7 +12,8 @@
 }
 
 .product_item:hover > .product_item-name, 
-.product_item:hover > .product_item-price{
+.product_item:hover > .product_item-price,
+.product_item:hover > .product_item-qty{
     text-decoration: underline;
 }
 
