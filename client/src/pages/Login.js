@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {users} from '../assets/dummy_data/users'
 
@@ -11,9 +11,10 @@ import '../components/Login.css';
 
 const Login = () => {
   const dummyUsers = users;
-  console.log(dummyUsers);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,11 +25,11 @@ const Login = () => {
     if(user && user.password === password){
       if(user.type === 'customer'){
         //Customer HomePage
-        window.location= "/customer-homepage";
+        navigate('/customer-homepage');
 
       }else if (user.type === 'merchant'){
         //Admin HomePage
-        window.location= "/admin-homepage";
+        navigate('/admin-homepage');
       }
 
     }else{
@@ -54,7 +55,7 @@ const Login = () => {
 
             <div>
               <label>Email Address</label>
-              <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <input type="email" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
 
             <div>

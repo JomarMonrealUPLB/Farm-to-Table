@@ -72,19 +72,27 @@ const Signup = () => {
               <label>Email Address</label>
               <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
-
+            
+            <div className='double'>
             <div>
             <label>First Name</label>
               <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+            </div>
+            <div>
             <label>Last Name</label>  
               <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
             </div>
+            </div>
 
+            <div className='double'>
             <div>
             <label>Password</label>
               <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </div>
+            <div>
             <label>Confirm Password</label>  
               <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+            </div>
             </div>
 
             <button type="submit">SIGN UP</button>

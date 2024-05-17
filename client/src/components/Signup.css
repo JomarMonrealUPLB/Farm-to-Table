@@ -8,16 +8,69 @@
     width: 50%;
 
 }
+
 .signup_page-main{
     display: flex;
     flex-direction: column;
     width: 50%;
     background-color: var(--primary-background);
+    padding: 50px;
 
 }
 
 .signup_page-main h1{
     font-size: 45px;
     font-weight: bolder;
+
+}
+
+.signup_page-form{
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 5px;
+    
+}
+
+.signup_page-form div{
+    
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    width: 100%;
+    padding-right: 5px;
+}
+
+.signup_page-form .double{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+}
+
+
+.signup_page-form label{
+    padding-bottom: 10px;
+    
+}
+
+.signup_page-form input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid white;
+    box-sizing: border-box;
+   
+}
+
+.signup_page-form button{
+    font-weight: bolder;
+    background-color: var(--primary-green);
+    color: white;
+    border: 1px solid var(--primary-green);
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
 
 }
