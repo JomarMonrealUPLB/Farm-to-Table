@@ -54,6 +54,7 @@ hr{
 
 .web_body{
   display: flex;
+  width: 100%;
 }
 
 .page{
