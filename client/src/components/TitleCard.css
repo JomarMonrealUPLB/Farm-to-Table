@@ -1,0 +1,30 @@
+.title_card-card{
+    position: relative;
+    background-color: var(--primary-green);
+    overflow: hidden;
+    padding: 50vh 0;
+}
+.title_card-title{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.title_card-title img{
+    width: 75%;
+
+}
+
+
+.title_card-description{
+    font-size: 18px;
+    color:var(--primary-background);
+    text-align: center;
+
+}
+
+.title_card-background img{
+    width: 100%;
+    z-index: 0;
+}

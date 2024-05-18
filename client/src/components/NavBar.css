@@ -15,6 +15,7 @@
 .nav_bar_hidden{
     visibility: hidden;
     position: relative;
+    width: 8ch;
     z-index: 0; 
 }
 
