@@ -7,6 +7,7 @@ import './ShoppingPage.css'
 
 import { products } from '../assets/dummy_data/products'
 import ProductItem from '../components/ProductItem'
+import Popup from '../components/Popup'
 
 const ShoppingPage = () => {
   const tempProducts = products.map(tempProduct =>
@@ -46,7 +47,7 @@ const ShoppingPage = () => {
       <div className='shopping_page-products'>
         {tempProducts}
       </div>
-
+      <Popup/>
     </div>
   )
 }
