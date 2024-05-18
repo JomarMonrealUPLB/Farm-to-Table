@@ -1,7 +1,10 @@
 .signup_page-container{
     display: flex;
-    height: auto;
-
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    width: 90vw;
+    overflow: hidden;
 }
 
 .signup_page-card{
