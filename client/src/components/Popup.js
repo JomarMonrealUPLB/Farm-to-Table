@@ -10,7 +10,7 @@ const Popup = ({onOutsideClick, borderRadius, width, height, child}) => {
         borderRadius: borderRadius,
         width: width,
         height: height,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'var(--primary-background)',
         zIndex: 20,
         margin: '0 auto',
       }}>
@@ -29,7 +29,7 @@ const Popup = ({onOutsideClick, borderRadius, width, height, child}) => {
         opacity: 0.6,
         zIndex: 15,
       }}
-      onClick={() => onOutsideClick}
+      onClick={onOutsideClick}
       >
       </div>
     </div>
@@ -39,7 +39,7 @@ const Popup = ({onOutsideClick, borderRadius, width, height, child}) => {
 Popup.defaultProps = {
   child: null,
   height: "80vh",
-  width: "50vw",
+  width: "40vw",
   borderRadius: 0,
 };
 
