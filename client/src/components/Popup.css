@@ -18,7 +18,6 @@
     scrollbar-width: none;
     display: flex;
     justify-content: space-around;
-    background-color: "#FFFFFF";
     z-index: 20;
 }
 
