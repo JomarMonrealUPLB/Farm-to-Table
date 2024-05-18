@@ -23,7 +23,26 @@ const NavBar = () => {
 
   return (
     <>
-      <div className='nav_bar nav_bar_hidden'/>
+    <div className='nav_bar nav_bar_hidden'>
+    {
+            navBarItems.map((navBarItem,index) =>{
+              return(
+                <Link key={index} to={navBarItem.path}>
+                  <li 
+                    id={"nav_bar-button-" + index}
+                    className='nav_bar-button'
+                    onClick={(e) => {
+                      setselectedIndex(index)
+                    }}
+                  >
+                   <div id={"nav_bar-selected-" + index} className={selectedIndex === index? "nav_bar-selected": "nav_bar-selected no_display"}></div>
+                   {navBarItem.icon}
+                  </li>
+                </Link>
+              )
+            })
+          }
+    </div>
 
       <div className='nav_bar'>
         <ul className='nav_bar-buttons'>
