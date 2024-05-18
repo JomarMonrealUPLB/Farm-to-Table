@@ -8,6 +8,7 @@ import CustomerHomePage from "./pages/CustomerHomePage"
 import ShoppingPage from "./pages/ShoppingPage";
 import AccountManagement from "./pages/AccountManagement";
 import background from "./assets/images/background.png"
+import CartPage from "./pages/CartPage";
 
 const App  =() =>{
   return (
@@ -22,6 +23,7 @@ const App  =() =>{
               <Route path="/admin-homepage" element={<AdminHomePage/>} />
               <Route path="/customer-homepage" element={<CustomerHomePage/>} />
               <Route path="/shopping-page" element={<ShoppingPage/>} />
+              <Route path="/cart" element={<CartPage/>} />
               <Route path="/account-management" element={<AccountManagement/>} />
               <Route path="*" element={<NoPage/>} />
           </Routes>
