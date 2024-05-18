@@ -47,7 +47,7 @@ const ShoppingPage = () => {
       <div className='shopping_page-products'>
         {tempProducts}
       </div>
-      <Popup/>
+      {/* <Popup/> */}
     </div>
   )
 }
