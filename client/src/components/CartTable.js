@@ -1,11 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './CartTable.css'
 
+const getTotal = (cartItems) =>{
+  let total = 0
+  cartItems.map(cartItem => {
+    total += (cartItem.quantity * cartItem.price)
+  })
+  return total
+}
+
 const CartTable = ({cartData}) => {
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(getTotal(cartData))
+  const [cartItems, setCartItems] = useState(cartData)
 
-
-  const cartItems = cartData;
+  useEffect(() => {
+    setTotal(getTotal(cartItems))
+    return () => {}
+  }, [cartItems])
+  
   return (
     <table className='cart_table' cellSpacing={0}>
         <thead className='cart_table-header'>
@@ -20,21 +32,32 @@ const CartTable = ({cartData}) => {
         <tbody className='cart_table-body'>
           
           {
-            //move to another compenent ?
-            //total should be dynamic
-            //quantity not yet working
-            cartItems.map(cartItem => (
+            cartItems.map((cartItem, index) => (
               <tr className='cart_table-row' key={cartItem.name}>
                 <td className='cart_table-row-img'>
                   <img src={cartItem.image} alt={cartItem.name}/>
                 </td>
                 <td className='cart_table-row-name'>
                   {cartItem.name}<br/>
-                  <button className='cart_table-row-button' onClick={()=>{}}>Remove</button>
+                  <button className='cart_table-row-button' onClick={()=>{
+                    setCartItems(
+                      [...cartItems.slice(0,index),
+                      ...cartItems.slice(index+1, cartItems.length)]
+                    )
+                  }}>Remove</button>
                 </td>
+
                 <td className='cart_table-row-price'>P {cartItem.price}</td>
                 <td className='cart_table-row-qty'>
-                  <input type='number' value={cartItem.quantity} onChange={()=>{}}/>
+                  <input type='number' value={cartItem.quantity} 
+                    onChange={(e)=>{
+                      setCartItems(
+                        [...cartItems.slice(0,index),
+                        {...cartItems[index], quantity: e.target.value}, 
+                        ...cartItems.slice(index+1, cartItems.length)]
+                      )
+                      
+                  }}/>
                 </td>
                 <td className='cart_table-row-total'>P {cartItem.quantity * cartItem.price}</td>
               </tr>
@@ -48,7 +71,7 @@ const CartTable = ({cartData}) => {
             <td/>
             <td/>
             <td className='footer-label-subtotal'>SubTotal: </td>
-            <td className='footer-subtotal-value'>P 99999</td>
+            <td className='footer-subtotal-value'>P {total}</td>
           </tr>
           <tr className='footer-row'>
             <td/>
