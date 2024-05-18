@@ -42,3 +42,7 @@
     justify-content: center;
     align-items: center;
 }
+
+.product_item-button:hover{
+    background-color: var(--primary-green-dark-hover);
+}
