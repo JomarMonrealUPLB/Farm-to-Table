@@ -1,4 +1,6 @@
-const Product = mongoose.model('products',{
+import mongoose from "mongoose"
+
+export const Product = mongoose.model('products',{
     name : String,
     description: String,
     image: String,

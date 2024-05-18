@@ -1,4 +1,6 @@
-const User = mongoose.model('users',{
+import mongoose from "mongoose"
+
+export const User = mongoose.model('users',{
     firstName: String,
     middleName : String,
     lastName: String,
