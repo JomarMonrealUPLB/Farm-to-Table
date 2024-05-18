@@ -14,8 +14,8 @@ const App  =() =>{
   return (
     <div className="App">
       <BrowserRouter>
+        <NavBar/>
         <div className="web_body">
-          <NavBar/>
           <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<Signup/>} />

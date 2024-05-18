@@ -79,3 +79,7 @@ button{
   width: 100%;
   opacity: 0.3;
 }
+
+.App{
+  display: flex;
+}
