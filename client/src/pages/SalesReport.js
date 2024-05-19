@@ -8,11 +8,13 @@ import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
 import { products } from '../assets/dummy_data/products'
 import { translateStatus } from '../utils/translateStatus'
+import { translateProductType } from '../utils/translateProductType'
 
 const SalesReport = () => {
     const [orderList, setOrderList] = useState(orders)
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
     const [serializedOrderList, setSerializedOrderList] = useState([])
+    const [totalSales, setTotalSales] = useState(0)
 
     const dropDownOptionsDate = [
         {name: "Date (latest-oldest)", value: "latest-oldest"},
@@ -26,45 +28,38 @@ const SalesReport = () => {
 
     const heads = [
         {label: "Date"}, 
-        {label: "Customer Email"}, 
         {label: "Product"}, 
-        {label: "Quantity"}, 
-        {label: "Status"}, 
-        {label: "Actions"}
+        {label: "Type"}, 
+        {label: "Price"}, 
+        {label: "Sold"}, 
+        {label: "Sales"}
     ]
 
     useEffect(() => {
         const serializedData = []
+        setTotalSales(0)
         orderList.forEach(order => {
-            if(order.status !== 1) return
+            if(order.status !== 2) return
+
+            const product = products.find(product => product.id === order.productID)
+            const soldOrders = orderList.filter(jOrder => jOrder.status === 2 && jOrder.productID === product.id)
+            let soldCount = 0
+            soldOrders.forEach(soldOrder => {
+                soldCount += soldOrder.quantity
+            });
 
             serializedData.push(
                 {
                     id: order.id,
                     date: new Date(order.date).toLocaleString(),
-                    email: order.email,
-                    product: products.find(product => product.id === order.productID).name,
-                    quantity: order.quantity,
-                    status: translateStatus( order.status),
-                    actions: [
-                        {
-                            label:"View Order", 
-                            buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
-                            callback: ()=>{}
-                        },
-                        {
-                            label:"Fulfill Order", 
-                            buttonStyle: {backgroundColor : "var(--primary-green)", hoverColor: "var(--primary-green-hover)"} ,
-                            callback: ()=>{}
-                        },
-                        {
-                            label:"Cancel Order", 
-                            buttonStyle: {backgroundColor : "var(--secondary-red)", hoverColor: "var(--secondary-red-hover)"} , 
-                            callback: ()=>{}
-                        },
-                    ]
+                    product: product.name,
+                    type: translateProductType(product.type),
+                    price: product.price,
+                    sold: soldCount,
+                    sales: product.price * soldCount,
                 }
             )
+            setTotalSales(totalSales => totalSales += product.price * soldCount) 
             
         })
         setOriginalSerializedOrderList(sortBy(serializedData,"lastName",true))
@@ -95,7 +90,15 @@ const SalesReport = () => {
         </div>
         <hr/>
 
+        <h1 style={{paddingTop:"1ch"}}>Weekly Report</h1>
+
         <DataTable data={serializedOrderList} heads={heads}/>
+        <hr/>
+            <div className='sales_total_container' style={{display: "flex", justifyContent:"end", alignItems:"center", fontSize: "20px",backgroundColor:"var(--primary-background)"}}>
+                <span>Total Sales: </span>
+                <strong>P {totalSales}</strong>
+            </div>
+        <hr/>
 
     </div>
     )

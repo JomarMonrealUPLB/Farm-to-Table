@@ -159,5 +159,21 @@ export const orders =
       status: 1,
       email: 'richard.miller@example.com',
       date: '2024-05-07T06:39:23.632Z'
-    }
+    },
+    {
+      transactionID: 'erxxbtbcw',
+      productID: 'HuYfzHBY',
+      quantity: 10,
+      status: 2,
+      email: 'richard.miller@example.com',
+      date: '2024-05-07T06:39:23.632Z'
+    },
+    {
+      transactionID: 'erxxbtbcw',
+      productID: 'sCVeoBna',
+      quantity: 10,
+      status: 2,
+      email: 'richard.miller@example.com',
+      date: '2024-05-10T06:39:23.632Z'
+    },
   ]
