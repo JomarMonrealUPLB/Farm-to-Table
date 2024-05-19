@@ -1,0 +1,26 @@
+.product_listings-dropdowns{
+    display: flex;
+    align-items: center;
+}
+
+span{
+    padding: 5px 1ch;
+}
+
+.link-wrapper{
+    width:13ch;
+    margin-top: 15px;
+    margin-bottom: -10px;
+}
+
+.add-product-link-button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.add-product-link-button:hover{
+    background-color: var(--primary-green-dark-hover);
+}
