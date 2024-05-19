@@ -4,15 +4,18 @@ const findEntries = (entries,string) => {
     const filteredEntries = []
     entries.forEach(entry => {
         const keys = Object.keys(entry)
-
         for (let i = 0; i < keys.length; i++) {
             const key = keys[i];
+            if(entry[key] === undefined){
+              continue
+            }
             if(typeof entry[key] === "string"){
                 if(entry[key].toLowerCase().includes(string.toLowerCase())){
                     filteredEntries.push(entry)
                     break
                 }
-            } else if(entry[key].$$typeof === Symbol.for("react.element")){
+            } 
+            else if(entry[key].$$typeof === Symbol.for("react.element")){
                 if(findTextInJSX(entry[key].props.children, string.toLowerCase())){
                     filteredEntries.push(entry)
                     break

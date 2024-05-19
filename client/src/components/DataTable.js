@@ -32,11 +32,15 @@ const DataTable = (props) => {
 }
 
 const evaluateInfo = (infos, key, index) => {
+    if(key==="id"){
+        return null
+    }
+
     if(key === "actions"){
         return (
             <td key={index} style={{textAlign: "center"}}>{
-                infos[key].map(action =>
-                    <button 
+                infos[key].map((action,index) =>
+                    <button key={index}
                         onClick={action.callback} 
                         style={{margin: "2px", ...action.buttonStyle}}
                         onMouseEnter={(e)=> e.currentTarget.style.backgroundColor = action.buttonStyle.hoverColor}
