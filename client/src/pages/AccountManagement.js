@@ -4,7 +4,7 @@ import DropDown1 from '../components/DropDown1'
 import {users} from "../assets/dummy_data/users"
 import DataTable from '../components/DataTable'
 import Header from '../components/Header'
-import { sortAlphabetically } from '../utils/sortAlphabetically'
+import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
 
 const AccountManagement = () => {
@@ -54,17 +54,17 @@ const AccountManagement = () => {
             )
             
         })
-        setOriginalSerializedUserList(sortAlphabetically(serializedData,"lastName",true))
-        setSerializedUserList(sortAlphabetically(serializedData,"lastName",true))
+        setOriginalSerializedUserList(sortBy(serializedData,"lastName",true))
+        setSerializedUserList(sortBy(serializedData,"lastName",true))
     }, []);
     
     
 
     const sortData = (dropDownValue, key) => {
         if(dropDownValue === "A-Z"){
-            setSerializedUserList(sortAlphabetically(originalSerializedUserList,key,true))
+            setSerializedUserList(sortBy(originalSerializedUserList,key,true))
         } else{
-            setSerializedUserList(sortAlphabetically(originalSerializedUserList,key,false))
+            setSerializedUserList(sortBy(originalSerializedUserList,key,false))
         }
     }
 

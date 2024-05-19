@@ -4,7 +4,7 @@ import DropDown1 from '../components/DropDown1'
 import {orders} from "../assets/dummy_data/orders"
 import DataTable from '../components/DataTable'
 import Header from '../components/Header'
-import { sortAlphabetically } from '../utils/sortAlphabetically'
+import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
 import { products } from '../assets/dummy_data/products'
 import { translateStatus } from '../utils/translateStatus'
@@ -14,14 +14,14 @@ const OrderFulfillment = () => {
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
     const [serializedOrderList, setSerializedOrderList] = useState([])
 
-    const dropDownOptionsLastName = [
-        {name: "Last Name (A-Z)", value: "A-Z"},
-        {name: "Last Name (Z-A)", value: "Z-A"}
+    const dropDownOptionsDate = [
+        {name: "Date (latest-oldest)", value: "latest-oldest"},
+        {name: "Date (oldest-latest)", value: "oldest-latest"}
     ]
 
-    const dropDownOptionsFirstName = [
-        {name: "First Name (A-Z)", value: "A-Z"},
-        {name: "First Name (Z-A)", value: "Z-A"}
+    const dropDownOptionsEmail = [
+        {name: "Email (A-Z)", value: "A-Z"},
+        {name: "Email (Z-A)", value: "Z-A"}
     ]
 
     const heads = [
@@ -67,17 +67,17 @@ const OrderFulfillment = () => {
             )
             
         })
-        setOriginalSerializedOrderList(sortAlphabetically(serializedData,"lastName",true))
-        setSerializedOrderList(sortAlphabetically(serializedData,"lastName",true))
+        setOriginalSerializedOrderList(sortBy(serializedData,"lastName",true))
+        setSerializedOrderList(sortBy(serializedData,"lastName",true))
     }, []);
     
     
 
     const sortData = (dropDownValue, key) => {
-        if(dropDownValue === "A-Z"){
-            setSerializedOrderList(sortAlphabetically(originalSerializedOrderList,key,true))
+        if(dropDownValue === "A-Z" || dropDownValue == "oldest-latest"){
+            setSerializedOrderList(sortBy(originalSerializedOrderList,key,true))
         } else{
-            setSerializedOrderList(sortAlphabetically(originalSerializedOrderList,key,false))
+            setSerializedOrderList(sortBy(originalSerializedOrderList,key,false))
         }
     }
 
@@ -90,8 +90,8 @@ const OrderFulfillment = () => {
         <hr/>
         <div className='account_management_dropdowns' style={{display: "flex", alignItems: "center"}}>
             <span style={{padding: "5px 1ch"}}>Sort By: </span>
-            <DropDown1 name="alphabetical_dropdown" options={dropDownOptionsFirstName} onChange={(e)=>{sortData(e.target.value, "email")}}/>
-            <DropDown1 name="alphabetical_dropdown" options={dropDownOptionsLastName} onChange={(e)=>{sortData(e.target.value, "email")}}/>
+            <DropDown1 name="alphabetical_dropdown" options={dropDownOptionsEmail} onChange={(e)=>{sortData(e.target.value, "email")}}/>
+            <DropDown1 name="alphabetical_dropdown" options={dropDownOptionsDate} onChange={(e)=>{sortData(e.target.value, "date")}}/>
         </div>
         <hr/>
 
