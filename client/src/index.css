@@ -63,6 +63,7 @@ hr{
 }
 
 button{
+  font-family: "Montserrat",sans-serif;
   color: white;
   background-color: var(--primary-green-dark);
   border: none;
