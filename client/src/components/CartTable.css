@@ -43,6 +43,7 @@ td{
 }
 
 .cart_table-row-button{
+    border-radius: 30px;
     margin-top: 5px;
     background-color: var(--secondary-red);
 }
@@ -74,6 +75,7 @@ td{
 }
 
 .footer-button-checkout{
+    border-radius: 30px;
     height: 5ch;
     width: 100%;
 }
