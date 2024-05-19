@@ -51,12 +51,22 @@ const CartTable = ({cartData}) => {
                 <td className='cart_table-row-qty'>
                   <input type='number' value={cartItem.quantity} 
                     onChange={(e)=>{
-                      setCartItems(
-                        [...cartItems.slice(0,index),
-                        {...cartItems[index], quantity: e.target.value}, 
-                        ...cartItems.slice(index+1, cartItems.length)]
-                      )
-                      
+                      const temp = {...cartItems[index], quantity: e.target.value}
+  
+                      if(e.target.value==="0") {
+                        setCartItems(
+                          [...cartItems.slice(0,index),
+                        
+                          ...cartItems.slice(index+1, cartItems.length)]
+                        )
+                      }
+                      else{
+                        setCartItems(
+                          [...cartItems.slice(0,index),
+                          temp,
+                          ...cartItems.slice(index+1, cartItems.length)]
+                        )
+                      }
                   }}/>
                 </td>
                 <td className='cart_table-row-total'>P {cartItem.quantity * cartItem.price}</td>
