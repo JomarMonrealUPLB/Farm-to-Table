@@ -33,7 +33,7 @@
 
 .product_item-button{
     width: 100%;
-    border-radius: 20px;
+    border-radius: 30px;
     margin-top: 15px;
 
     font-weight: bold;
@@ -41,4 +41,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.product_item-button:hover{
+    background-color: var(--primary-green-dark-hover);
 }
