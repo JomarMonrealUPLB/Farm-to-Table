@@ -20,7 +20,7 @@ export const orders =
       transactionID: '2msw8rxtd',
       productID: 'wkxKzQTG',
       quantity: 2,
-      status: 0,
+      status: 2,
       email: 'james.wilson@example.com',
       date: '2024-04-13T06:39:23.632Z'
     },
@@ -36,7 +36,7 @@ export const orders =
       transactionID: 'g489hwe1r',
       productID: 'MzSPJBLG',
       quantity: 5,
-      status: 0,
+      status: 2,
       email: 'patricia.smith@example.com',
       date: '2024-04-26T06:39:23.632Z'
     },
@@ -124,7 +124,7 @@ export const orders =
       transactionID: 'jceypfhhm',
       productID: 'DneHfjCA',
       quantity: 3,
-      status: 1,
+      status: 3,
       email: 'karen.moore@example.com',
       date: '2024-04-14T06:39:23.632Z'
     },
@@ -140,7 +140,7 @@ export const orders =
       transactionID: 'bljbwgiq0',
       productID: 'KBQDyVoQ',
       quantity: 2,
-      status: 0,
+      status: 2,
       email: 'james.wilson@example.com',
       date: '2024-05-01T06:39:23.632Z'
     },
@@ -148,7 +148,7 @@ export const orders =
       transactionID: 'wxnzf4x8o',
       productID: 'QCtNbxoV',
       quantity: 3,
-      status: 0,
+      status: 3,
       email: 'james.wilson@example.com',
       date: '2024-04-23T06:39:23.632Z'
     },

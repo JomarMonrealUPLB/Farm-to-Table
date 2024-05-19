@@ -32,6 +32,10 @@ const DataTable = (props) => {
 }
 
 const evaluateInfo = (infos, key, index) => {
+    if(key==="id"){
+        return null
+    }
+
     if(key === "actions"){
         return (
             <td key={index} style={{textAlign: "center"}}>{
