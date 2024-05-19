@@ -7,7 +7,7 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 import { PiUserCircleLight } from "react-icons/pi";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { iconColor, iconSize } from '../constants/IconSize';
-
+import { IoReceiptOutline } from "react-icons/io5";
 
 
 const NavBar = () => {
@@ -16,6 +16,7 @@ const NavBar = () => {
     {path : "/shopping-page", icon: <LiaShoppingBagSolid color={iconColor} size={iconSize}/>},
     {path : "/profile", icon: <PiUserCircleLight color={iconColor} size={iconSize} />},
     {path : "/account-management", icon: <MdOutlineManageAccounts color={iconColor} size={iconSize} />},
+    {path : "/order-fulfillment", icon: <IoReceiptOutline color={iconColor} size={"3.5ch"} />}
   ]
 
   const [selectedIndex, setselectedIndex] = useState(0)
