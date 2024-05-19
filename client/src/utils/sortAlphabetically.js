@@ -10,7 +10,6 @@ export const sortAlphabetically = (list, key, isAscending) =>{
             }
             return 0;
           });  
-          console.log(result)
           return result 
     } else{
         let result = newList.sort(function (a, b) {
@@ -22,7 +21,6 @@ export const sortAlphabetically = (list, key, isAscending) =>{
             }
             return 0;
           });  
-          console.log(result)
           return result 
     }
 }

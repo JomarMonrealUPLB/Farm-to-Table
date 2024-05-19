@@ -47,11 +47,17 @@ const OrderFulfillment = () => {
                     quantity: order.quantity,
                     status: translateStatus( order.status),
                     actions: [
-                    {
+                        {
+                            label:"View Order", 
+                            buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
+                            callback: ()=>{}
+                        },
+                        {
                             label:"Fulfill Order", 
                             buttonStyle: {backgroundColor : "var(--primary-green)", hoverColor: "var(--primary-green-hover)"} ,
-                            callback: ()=>{}},
-                    {
+                            callback: ()=>{}
+                        },
+                        {
                             label:"Cancel Order", 
                             buttonStyle: {backgroundColor : "var(--secondary-red)", hoverColor: "var(--secondary-red-hover)"} , 
                             callback: ()=>{}
