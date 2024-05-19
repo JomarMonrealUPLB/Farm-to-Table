@@ -3,17 +3,10 @@
     align-items: center;
 }
 
-.shopping_page_dropdowns p{
-    margin-right: 10px;
-}
-
 .shopping_page-products{
     margin-top: 20px;
 
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-
-    /* border: 1px solid;
-    border-color: black; */
 }
