@@ -79,7 +79,7 @@ const OrderFulfillment = () => {
     return (
     <div className='account_management page'>
         <Header headerTitle={"Order FulFillment"}/>
-        <SearchBox placeholder="Find User" onChange={e=>setSerializedOrderList(findEntries(originalSerializedOrderList,e.target.value))}/>
+        <SearchBox placeholder="Find Order" onChange={e=>setSerializedOrderList(findEntries(originalSerializedOrderList,e.target.value))}/>
 
         <hr/>
         <div className='account_management_dropdowns' style={{display: "flex", alignItems: "center"}}>

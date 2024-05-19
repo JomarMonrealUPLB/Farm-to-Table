@@ -35,7 +35,7 @@ const AccountManagement = () => {
         userList.forEach(user => {
             serializedData.push(
                 {
-                    id: user.id,
+                    user_id: user.id,
                     email: user.email,
                     firstName: user.firstName,
                     lastName: user.lastName,
