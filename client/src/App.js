@@ -13,6 +13,7 @@ import CartPage from "./pages/CartPage";
 import OrderFulfillment from "./pages/OrderFulfillment";
 import ProductListingsPage from "./pages/ProductListingsPage";
 import SalesReport from "./pages/SalesReport";
+import AddProductPage from "./pages/AddProductPage";
 
 const App  =() =>{
   return (
@@ -32,6 +33,7 @@ const App  =() =>{
               <Route path="/order-fulfillment" element={<OrderFulfillment/>} />
               <Route path="/product-listings" element={<ProductListingsPage/>} />
               <Route path="/sales-report" element={<SalesReport/>} />
+              <Route path="/add-product" element={<AddProductPage/>} />
               <Route path="*" element={<Messenger/>} />
           </Routes>
           <img className="page_background_decor" src={background}/>
