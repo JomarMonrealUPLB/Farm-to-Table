@@ -88,11 +88,12 @@ const SalesReport = () => {
                 tempStartDate = tempStartDate.clone().add(timeframeLength,timeframe)
                 tempAddedDate = tempAddedDate.clone().add(timeframeLength,timeframe)
             }
-            setReferenceDate(tempStartDate)
-            tempStartDate = moment(referenceDate).startOf('year')
-            tempAddedDate = moment(referenceDate).endOf('year')
-            setStartDate(moment(referenceDate).startOf('year'))
-            setEndDate (moment(referenceDate).endOf('year'))
+            let referenceDateTemp = tempStartDate
+            setReferenceDate(referenceDateTemp)
+            tempStartDate = moment(referenceDateTemp).startOf('year')
+            tempAddedDate = moment(referenceDateTemp).endOf('year')
+            setStartDate(tempStartDate)
+            setEndDate (tempAddedDate)
             const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStartDate.clone().subtract(1,"d"),tempAddedDate.clone().add(1,"d")))
             setSerializedOrderList(tempOrders)           
             let sum = 0
@@ -108,15 +109,18 @@ const SalesReport = () => {
     <div className='account_management page'>
         <Header headerTitle={"Sales Report"}/>
 
-        {
-            <LineChart width={600} height={300} data={[...serializedOrderList].reverse()}>
-                <Line type="monotone" dataKey="sales" stroke="var(--primary-green)" />
-                <CartesianGrid stroke="#var(--primary-green-dark)" />
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip />
-            </LineChart>
-        }
+        <div style={{display:"flex",justifyContent:"center"}}>      
+            {
+                serializedOrderList.length === 0? <h1 style={{textAlign:"center",padding:"120px"}}>No Graph to Show.</h1>:
+                <LineChart width={600} height={300} data={[...serializedOrderList].reverse()}>
+                    <Line type="monotone" dataKey="sales" stroke="var(--primary-green)" />
+                    <CartesianGrid stroke="#var(--primary-green-dark)" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                </LineChart>
+            }
+        </div>
 
 
         <div className='product_detail_screen-carousel' style={{paddingTop:"1ch"}}>
