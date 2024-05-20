@@ -12,7 +12,7 @@ userRouter(app)
 orderRouter(app)
 
 
-await mongoose.connect("mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrhdl.mongodb.net/",{useNewUrlParser: true, useUnifiedTopology: true})
+await mongoose.connect("mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrhdl.mongodb.net/Farm-to-Table",{useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log('App connected to database');
     app.listen(3000,() => console.log("Server is now running at port 3000..."));

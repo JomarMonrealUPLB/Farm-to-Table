@@ -9,7 +9,10 @@ import ShoppingPage from "./pages/ShoppingPage";
 import AccountManagement from "./pages/AccountManagement";
 import background from "./assets/images/background.png"
 import Messenger from "./pages/Messenger";
+import CartPage from "./pages/CartPage";
 import OrderFulfillment from "./pages/OrderFulfillment";
+import ProductListingsPage from "./pages/ProductListingsPage";
+import SalesReport from "./pages/SalesReport";
 import AddProductPage from "./pages/AddProductPage";
 
 const App  =() =>{
@@ -25,8 +28,11 @@ const App  =() =>{
               <Route path="/admin-homepage" element={<AdminHomePage/>} />
               <Route path="/customer-homepage" element={<CustomerHomePage/>} />
               <Route path="/shopping-page" element={<ShoppingPage/>} />
+              <Route path="/cart" element={<CartPage/>} />
               <Route path="/account-management" element={<AccountManagement/>} />
               <Route path="/order-fulfillment" element={<OrderFulfillment/>} />
+              <Route path="/product-listings" element={<ProductListingsPage/>} />
+              <Route path="/sales-report" element={<SalesReport/>} />
               <Route path="/add-product" element={<AddProductPage/>} />
               <Route path="*" element={<Messenger/>} />
           </Routes>

@@ -30,25 +30,22 @@ const ShoppingPage = () => {
   const sortOptions = [
     {name: 'Price (low - high)', value: 'low-high'},
     {name: 'Price (high - low)', value: 'high-low'},
-    {name: 'Alphabetically (A - Z)', value: 'a-z'},
-    {name: 'Alphabetically (Z - A)', value: 'z-a'},
-    {name: 'Best Selling', value: 'best-selling'}
+    {name: 'Name (A - Z)', value: 'a-z'},
+    {name: 'Name(Z - A)', value: 'z-a'}
   ]
 
   return (
     <div className='shopping_page page' style={{backgroundColor: '--primary-background'}}>
       <Header headerTitle={'Products'}/>
       <SearchBox placeholder={'Find Products'}/>
-
       <hr/>
       <div className='shopping_page_dropdowns'>
-        <p>Filter By:</p>
+        <span>Filter By:</span>
         <DropDown1 name={'filter_dropdown'} options={filterOptions} onChange={()=>{}}/>
-        <p style={{marginLeft: '20px'}}>Sort By:</p>
+        <span>Sort By:</span>
         <DropDown1 name={'sort_dropdown'} options={sortOptions} onChange={()=>{}}/>
       </div>
       <hr/>
-      
       <div className='shopping_page-products'>
         {tempProducts}
       </div>

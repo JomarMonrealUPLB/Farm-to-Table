@@ -8,7 +8,7 @@
 .data_table th{
     background-color: var(--primary-green);
     color: white;
-    padding: 1ch;
+    padding: 0.8ch;
 }
 
 .data_table tr{
