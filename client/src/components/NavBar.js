@@ -10,6 +10,7 @@ import { iconColor, iconSize } from '../constants/IconSize';
 import { IoReceiptOutline } from "react-icons/io5";
 import { MdFormatListBulleted } from "react-icons/md";
 import { TbReport } from "react-icons/tb";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 
 
@@ -21,7 +22,8 @@ const NavBar = () => {
     {path : "/account-management", icon: <MdOutlineManageAccounts color={iconColor} size={iconSize} />},
     {path : "/order-fulfillment", icon: <IoReceiptOutline color={iconColor} size={"3.5ch"} />},
     {path : "/product-listings", icon: <MdFormatListBulleted color={iconColor} size={iconSize} />},
-    {path : "/sales-report", icon: <TbReport color={iconColor} size={iconSize} />}
+    {path : "/sales-report", icon: <TbReport color={iconColor} size={iconSize} />},
+    {path : "/add-product", icon: <IoIosAddCircleOutline color={iconColor} size={iconSize} />}
   ]
 
   const [selectedIndex, setselectedIndex] = useState(0)

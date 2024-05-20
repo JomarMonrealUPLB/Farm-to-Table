@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import SearchBox from '../components/SearchBox'
-import DropDown1 from '../components/DropDown1'
 import {orders} from "../assets/dummy_data/orders"
 import DataTable from '../components/DataTable'
 import Header from '../components/Header'
 import { sortBy } from '../utils/sortBy'
-import findEntries  from '../utils/findEntries'
 import { products } from '../assets/dummy_data/products'
-import { translateStatus } from '../utils/translateStatus'
 import { translateProductType } from '../utils/translateProductType'
 import moment from 'moment';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 const SalesReport = () => {
     const [orderList, setOrderList] = useState(orders)
@@ -19,7 +16,7 @@ const SalesReport = () => {
     const [totalSales, setTotalSales] = useState(0)
     
     const timeframes = ["Weekly Report", "Monthly Report", "Yearly Report"]
-    const [timeframeIndex, setTimeframeIndex] = useState(0)
+    const [timeframeIndex, setTimeframeIndex] = useState(2)
     const [referenceDate, setReferenceDate] = useState(null)
     const [startDate, setStartDate] = useState(moment().day(1))
     const [endDate, setEndDate] = useState(moment().day(1))
@@ -91,9 +88,12 @@ const SalesReport = () => {
                 tempStartDate = tempStartDate.clone().add(timeframeLength,timeframe)
                 tempAddedDate = tempAddedDate.clone().add(timeframeLength,timeframe)
             }
-            setReferenceDate(tempStartDate)
+            let referenceDateTemp = tempStartDate
+            setReferenceDate(referenceDateTemp)
+            tempStartDate = moment(referenceDateTemp).startOf('year')
+            tempAddedDate = moment(referenceDateTemp).endOf('year')
             setStartDate(tempStartDate)
-            setEndDate(tempAddedDate)
+            setEndDate (tempAddedDate)
             const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStartDate.clone().subtract(1,"d"),tempAddedDate.clone().add(1,"d")))
             setSerializedOrderList(tempOrders)           
             let sum = 0
@@ -108,6 +108,20 @@ const SalesReport = () => {
     return (
     <div className='account_management page'>
         <Header headerTitle={"Sales Report"}/>
+
+        <div style={{display:"flex",justifyContent:"center"}}>      
+            {
+                serializedOrderList.length === 0? <h1 style={{textAlign:"center",padding:"120px"}}>No Graph to Show.</h1>:
+                <LineChart width={600} height={300} data={[...serializedOrderList].reverse()}>
+                    <Line type="monotone" dataKey="sales" stroke="var(--primary-green)" />
+                    <CartesianGrid stroke="#var(--primary-green-dark)" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                </LineChart>
+            }
+        </div>
+
 
         <div className='product_detail_screen-carousel' style={{paddingTop:"1ch"}}>
             <MdKeyboardArrowLeft 
