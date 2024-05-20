@@ -12,6 +12,7 @@ import Messenger from "./pages/Messenger";
 import CartPage from "./pages/CartPage";
 import OrderFulfillment from "./pages/OrderFulfillment";
 import ProductListingsPage from "./pages/ProductListingsPage";
+import SalesReport from "./pages/SalesReport";
 
 const App  =() =>{
   return (
@@ -30,6 +31,7 @@ const App  =() =>{
               <Route path="/account-management" element={<AccountManagement/>} />
               <Route path="/order-fulfillment" element={<OrderFulfillment/>} />
               <Route path="/product-listings" element={<ProductListingsPage/>} />
+              <Route path="/sales-report" element={<SalesReport/>} />
               <Route path="*" element={<Messenger/>} />
           </Routes>
           <img className="page_background_decor" src={background}/>
