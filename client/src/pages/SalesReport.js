@@ -94,7 +94,7 @@ const SalesReport = () => {
             setReferenceDate(tempStartDate)
             setStartDate(tempStartDate)
             setEndDate(tempAddedDate)
-            const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStartDate,tempAddedDate))
+            const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStartDate.clone().subtract(1,"d"),tempAddedDate.clone().add(1,"d")))
             setSerializedOrderList(tempOrders)           
             let sum = 0
             tempOrders.forEach(order=>{
@@ -108,7 +108,6 @@ const SalesReport = () => {
     return (
     <div className='account_management page'>
         <Header headerTitle={"Sales Report"}/>
-        <SearchBox placeholder="Find Order" onChange={e=>setSerializedOrderList(findEntries(originalSerializedOrderList,e.target.value))}/>
 
         <div className='product_detail_screen-carousel' style={{paddingTop:"1ch"}}>
             <MdKeyboardArrowLeft 
@@ -134,7 +133,7 @@ const SalesReport = () => {
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
 
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart,tempEnd))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{
@@ -157,7 +156,7 @@ const SalesReport = () => {
                     }
                     else if(timeframeIndex === 1) { 
                         tempStart =(moment(referenceDate).startOf('year'))
-                        tempEnd =(moment(referenceDate).endOf('year').subtract(1,"d"))
+                        tempEnd =(moment(referenceDate).endOf('year'))
                     }
                     else if(timeframeIndex === 2) { 
                         tempStart =(moment(referenceDate))
@@ -166,7 +165,7 @@ const SalesReport = () => {
                     setTimeframeIndex((timeframeIndex+1)%timeframes.length) 
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart,tempEnd))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{
@@ -192,7 +191,7 @@ const SalesReport = () => {
                     let tempEnd = endDate.clone().subtract(timeframeLength,timeframe)
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart,tempEnd))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{
@@ -217,7 +216,7 @@ const SalesReport = () => {
                     let tempEnd = endDate.clone().add(timeframeLength,timeframe)
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart,tempEnd))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{

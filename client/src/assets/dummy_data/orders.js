@@ -170,6 +170,22 @@ export const orders =
     },
     {
       transactionID: 'erxxbtbcw',
+      productID: 'HuYfzHBY',
+      quantity: 10,
+      status: 2,
+      email: 'richard.miller@example.com',
+      date: '2024-04-05T06:39:23.632Z'
+    },
+    {
+      transactionID: 'erxx7tbcw',
+      productID: 'HuYfzHBY',
+      quantity: 10,
+      status: 2,
+      email: 'richard.miller@example.com',
+      date: '2024-05-05T06:39:23.632Z'
+    },
+    {
+      transactionID: 'erxxbtbcw',
       productID: 'sCVeoBna',
       quantity: 10,
       status: 2,
