@@ -58,7 +58,7 @@ const Signup = () => {
 
 
   return (
-    <div className='signup_page page' style={{backgroundColor: "white"}}> 
+    <div className='signup_page page' > 
       <div className='signup_page-container'>
         <div className='login_page-card'>
           <TitleCard />
