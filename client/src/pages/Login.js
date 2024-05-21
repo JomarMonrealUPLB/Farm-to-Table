@@ -9,7 +9,7 @@ import '../components/Login.css';
 
 
 
-const Login = () => {
+const Login = (props) => {
   const dummyUsers = users;
 
   const [email, setEmail] = useState('');
@@ -38,6 +38,8 @@ const Login = () => {
       setPassword('');
 
     }
+
+    props.onSubmit(user.type)
 
   }
 

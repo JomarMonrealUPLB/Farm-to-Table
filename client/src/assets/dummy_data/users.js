@@ -1,5 +1,23 @@
 export const users = [
     {
+      id: "100",
+      firstName: 'Mary',
+      middleName: 'Arthur',
+      lastName: 'Williams',
+      type: 'customer',
+      email: 'customer@example.com',
+      password: '12345678'
+    },
+    {
+      id: "101",
+      firstName: 'Admin',
+      middleName: 'Arthur',
+      lastName: 'Williams',
+      type: 'merchant',
+      email: 'merchant@example.com',
+      password: '12345678'
+    },
+    {
       id: "10",
       firstName: 'Mary',
       middleName: 'Arthur',
