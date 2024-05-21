@@ -44,7 +44,7 @@ const Login = (props) => {
   }
 
   return (
-    <div className='login_page page' style={{backgroundColor: "white"}}>
+    <div className='login_page page'>
       <div className='login_page-container'>
         <div className='login_page-card'>
           <TitleCard />

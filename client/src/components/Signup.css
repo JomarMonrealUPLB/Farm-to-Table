@@ -17,8 +17,8 @@
     flex-direction: column;
     width: 50%;
     background-color: var(--primary-background);
-    padding: 50px;
-
+    padding: 50vh 50px;
+    overflow: hidden;
 }
 
 .signup_page-main h1{
