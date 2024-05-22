@@ -1,7 +1,14 @@
-// import { function } from './controller.js';
+import { getOrderById, getAllOrders, getOrdersWithStatusNumber, createOrder, updateOrder, deleteOrder, getCart } from "../controllers/order_controller.js";
 
 const ordersRouter = (app) => {
-    // app.get('/', getAllOrders);
+    app.get('/cart/:email', getCart)
+    app.get('/orders', getAllOrders)
+    app.get('/orders/status/:num', getOrdersWithStatusNumber)
+    app.get('/orders/:id', getOrderById)
+
+    app.post('/orders', createOrder)
+    app.patch('/orders/:id', updateOrder)
+    app.delete('/orders/:id', deleteOrder)
 }
 
 export default ordersRouter;

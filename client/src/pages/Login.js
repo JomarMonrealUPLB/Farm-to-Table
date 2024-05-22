@@ -6,10 +6,11 @@ import {users} from '../assets/dummy_data/users'
 
 import TitleCard from '../components/TitleCard.js';
 import '../components/Login.css';
+import { UserType } from '../constants/UserType.js';
 
 
 
-const Login = () => {
+const Login = (props) => {
   const dummyUsers = users;
 
   const [email, setEmail] = useState('');
@@ -19,10 +20,24 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const user = dummyUsers.find((user) => user.email === email);
-    
+    const userRaw = await fetch("http://localhost:3000/auth",{
+      credentials: "include",
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        
+      },
+      body: JSON.stringify({email: email, password: password})
+    })
+
+    const user = await userRaw.json()
+
     //Checks if user exists and checks if the passwords match
-    if(user && user.password === password){
+    if(user){
+      sessionStorage.setItem("userType", user.type)
+      sessionStorage.setItem("userEmail", user.email)
+
       if(user.type === 'customer'){
         //Customer HomePage
         navigate('/customer-homepage');
@@ -39,10 +54,17 @@ const Login = () => {
 
     }
 
+    props.onSubmit(user.type)
+
   }
 
+  useEffect(() => {
+    sessionStorage.setItem("userType", UserType.GUEST)
+    sessionStorage.setItem("userEmail", "")
+  }, []);
+
   return (
-    <div className='login_page page' style={{backgroundColor: "white"}}>
+    <div className='login_page page'>
       <div className='login_page-container'>
         <div className='login_page-card'>
           <TitleCard />
