@@ -8,10 +8,20 @@ import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
 
 const AccountManagement = () => {
-    const [userList, setuserList] = useState(users)
+    const [userList, setuserList] = useState([])
     const [originalSerializedUserList, setOriginalSerializedUserList] = useState([])
     const [serializedUserList, setSerializedUserList] = useState([])
 
+    useEffect(() => {
+        fetch('http://localhost:3000/users')
+          .then(response => response.json())
+          .then(body => {
+            console.log(body);
+            setuserList(body)
+          })
+      },[]);
+
+      
     const dropDownOptionsLastName = [
         {name: "Last Name (A-Z)", value: "A-Z"},
         {name: "Last Name (Z-A)", value: "Z-A"}
@@ -56,7 +66,7 @@ const AccountManagement = () => {
         })
         setOriginalSerializedUserList(sortBy(serializedData,"lastName",true))
         setSerializedUserList(sortBy(serializedData,"lastName",true))
-    }, []);
+    }, [userList]);
     
     
 
