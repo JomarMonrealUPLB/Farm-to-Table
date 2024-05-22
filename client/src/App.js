@@ -24,13 +24,12 @@ import { MdFormatListBulleted } from "react-icons/md";
 import { TbReport } from "react-icons/tb";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LuLogOut } from "react-icons/lu";
 
 
 
 const App  =() =>{
-
   const [userType,setUserType] = useState(UserType.GUEST)
 
   const routeList = [
@@ -49,6 +48,17 @@ const App  =() =>{
     {path: "/logout", element: <Navigate to="/"/>, visibility: ["all"], icon: <LuLogOut color={iconColor} size={"3.5ch"}/>},
     {path: "/*", element: <NoPage />, visibility: ["none"]},
   ]
+
+  useEffect(() => {
+    setUserType(sessionStorage.getItem("userType"))
+  }, []);
+
+  useEffect(() => {
+    console.log(userType)
+    return () => {
+      
+    };
+  }, [userType]);
 
   return (
     <div className="App">
