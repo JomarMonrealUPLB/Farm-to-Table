@@ -6,7 +6,7 @@ const userRouter = (app) => {
     app.get('/users/:id', getUserById);
     app.get('/users/email/:email', getUserByEmail);
     app.post('/users', createUser);
-    app.patch('/users', updateUser);
+    app.patch('/users/:id', updateUser);
     app.delete('/users/:id', deleteUser);
 
 }

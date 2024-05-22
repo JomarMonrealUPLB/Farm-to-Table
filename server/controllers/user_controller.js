@@ -1,8 +1,6 @@
 import { User } from '../models/user.js';
 import mongoose from "mongoose"
 
-const ObjectId = mongoose.Types.ObjectId;
-
 const getAllUsers = async (req, res) => {
 
     try{
@@ -19,7 +17,7 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
 
     try{
-        const user = await User.findById(ObjectId(req.params.id));
+        const user = await User.findById((req.params.id));
         
         if (!user){
             return res.send("User does not exist.");
@@ -34,9 +32,9 @@ const getUserById = async (req, res) => {
 
 
 const getUserByEmail = async (req, res) => {
-
     try{
-        const user = await User.findOne({ email: res.params.email });
+        console.log(req.params.email);
+        const user = await User.findOne({email: req.params.email});
         
         if (!user){
             res.send("User does not exist.");
@@ -75,14 +73,14 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
 
     try{
-        const updatedUser = await User.findById(ObjectId(req.params.id));
+        const updatedUser = await User.findById((req.params.id));
         
         if (!updatedUser){
             return res.send("User does not exist.");
         }
-        const user = await updateUser.updateOne({})
+        const user = await updatedUser.updateOne(req.body)
 
-        res.json(user);
+        return res.send("Updated a user.");
 
     }catch(err){
         console.log(err);
@@ -92,13 +90,14 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try{
-        const deletedUser = await User.findById(ObjectId(req.params.id));
+        const deletedUser = await User.findById((req.params.id));
         
         if (!deletedUser){
             return res.send("User does not exist.");
         }
 
-        await deletedUser.remove();
+        await deletedUser.deleteOne({_id: req.params.id});
+        return res.send("Deleted a user.");
 
     }catch(err){
         console.log(err);
