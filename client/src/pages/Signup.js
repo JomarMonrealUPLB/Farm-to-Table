@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {users} from '../assets/dummy_data/users'
 
@@ -13,7 +13,8 @@ const Signup = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
+  
   const [confirmPassword,setConfirmPassword] = useState('');
   
 
@@ -36,6 +37,7 @@ const Signup = () => {
     //object for new user
     const newUser = {
       firstName: firstName,
+      middleName: "",
       lastName: lastName,
       type: 'customer',
       email: email,
@@ -43,7 +45,18 @@ const Signup = () => {
     };
 
     //add new user
-    dummyUsers.push(newUser);
+    fetch('http://localhost:3000/users',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+      .then(response => {
+        response.text()
+        alert("User added!");
+      })
 
     //reset form 
     setEmail('');
@@ -52,7 +65,7 @@ const Signup = () => {
     setPassword('');
     setConfirmPassword('');
 
-    console.log(users);
+    navigate('/login');
 
   }
 
