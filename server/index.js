@@ -20,7 +20,7 @@ await mongoose.connect("mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrh
   });
 
   
-app.use(cors({origin: "http://localhost:3001",methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"] ,credentials: true}))
+app.use(cors({origin: "http://localhost:3001",methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE", "PATCH"] ,credentials: true}))
 app.use(express.json())
 
 app.use(session({
