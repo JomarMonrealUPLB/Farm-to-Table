@@ -147,7 +147,7 @@ const SalesReport = () => {
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
 
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart,tempEnd))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{
@@ -179,7 +179,7 @@ const SalesReport = () => {
                     setTimeframeIndex((timeframeIndex+1)%timeframes.length) 
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart,tempEnd))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{
@@ -205,7 +205,7 @@ const SalesReport = () => {
                     let tempEnd = endDate.clone().subtract(timeframeLength,timeframe)
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart, timeframeIndex === 0? tempEnd.clone().add(1,"d"):tempEnd))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{
@@ -230,7 +230,7 @@ const SalesReport = () => {
                     let tempEnd = endDate.clone().add(timeframeLength,timeframe)
                     setStartDate(tempStart)
                     setEndDate(tempEnd)
-                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart.clone().subtract(1,"d"),tempEnd.clone().add(1,"d")))
+                    const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStart,timeframeIndex === 0? tempEnd.clone().add(1,"d"):tempEnd))
                     setSerializedOrderList(tempOrders)           
                     let sum = 0
                     tempOrders.forEach(order=>{

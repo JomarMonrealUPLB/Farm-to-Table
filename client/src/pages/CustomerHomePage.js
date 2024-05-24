@@ -9,7 +9,7 @@ import images from '../assets/images/Farm-To-Table_Designs.png'
 const CustomerHomePage = () => {
   return (
     <div className='customer_homepage page'>
-      <div className='header'>
+      <div className='flexed_center'>
         <img src={images} className='homepage-header'/>
       </div>
       <hr></hr>

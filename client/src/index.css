@@ -85,3 +85,8 @@ button{
 .App{
   display: flex;
 }
+
+.flexed_center{
+  display: flex;
+  justify-content: center;
+}

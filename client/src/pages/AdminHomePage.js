@@ -6,11 +6,13 @@ import images from '../assets/images/Farm-To-Table_Designs.png'
 import { GrGroup } from "react-icons/gr";
 import { IoMdPaper } from "react-icons/io";
 import { GoGraph } from "react-icons/go";
+import { MdFormatListBulleted } from 'react-icons/md';
+import { iconColor } from '../constants/IconSize';
 
 const AdminHomePage = () => {
   return (
     <div className='admin_homepage page'>
-      <div className='header'>
+      <div className='flexed_center'>
         <img src={images} className='homepage-header'/>
       </div>
       <hr></hr>
@@ -30,7 +32,7 @@ const AdminHomePage = () => {
       <div className="card-container">
                 <Card 
                     title="Product Listing"
-                    image = {<CgProfile size ='150px' color='white' />}
+                    image = {<MdFormatListBulleted color={iconColor} size={"150px"}/>}
                     description="Manage your products here"
                     path="/product-listings"
                 />
