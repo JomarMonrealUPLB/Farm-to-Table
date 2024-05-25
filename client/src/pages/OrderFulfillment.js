@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import SearchBox from '../components/SearchBox'
 import DropDown1 from '../components/DropDown1'
-import {orders} from "../assets/dummy_data/orders"
 import DataTable from '../components/DataTable'
 import Header from '../components/Header'
 import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
-import { products } from '../assets/dummy_data/products'
 import { translateStatus } from '../utils/translateStatus'
+import handleOrderFulfillmentClick from '../eventhandlers/OrderFulfillmentHandler'
 
 const OrderFulfillment = () => {
     const [orderList, setOrderList] = useState([])
@@ -37,24 +36,23 @@ const OrderFulfillment = () => {
         fetch('http://localhost:3000/orders')
         .then(response => response.json())
         .then(body => {
-            console.log(body)
             setOrderList(body)
         })
     },[])
 
     useEffect(() => {
         const serializedData = []
-        orderList.forEach(order => {
+        orderList.forEach((order, index) => {
             if(order.status !== 1) return
 
             serializedData.push(
                 {
-                    id: order.id,
+                    id: order._id,
                     date: new Date(order.date).toLocaleString(),
                     email: order.email,
-                    product: products.find(product => product.id === order.productID).name,
+                    product: "Manok",
                     quantity: order.quantity,
-                    status: translateStatus( order.status),
+                    status: translateStatus(order.status),
                     actions: [
                         {
                             label:"View Order", 
@@ -64,12 +62,30 @@ const OrderFulfillment = () => {
                         {
                             label:"Fulfill Order", 
                             buttonStyle: {backgroundColor : "var(--primary-green)", hoverColor: "var(--primary-green-hover)"} ,
-                            callback: ()=>{}
+                            callback: ()=>{
+                                handleOrderFulfillmentClick(order, 2)
+                                setOrderList(
+                                    [
+                                        ...orderList.slice(0, index),
+                                        {...orderList[index], status: 2},
+                                        ...orderList.slice(index+1, orderList.length)
+                                    ]
+                                )
+                            }
                         },
                         {
                             label:"Cancel Order", 
                             buttonStyle: {backgroundColor : "var(--secondary-red)", hoverColor: "var(--secondary-red-hover)"} , 
-                            callback: ()=>{}
+                            callback: ()=>{
+                                handleOrderFulfillmentClick(order, 3)
+                                setOrderList(
+                                    [
+                                        ...orderList.slice(0, index),
+                                        {...orderList[index], status: 3},
+                                        ...orderList.slice(index+1, orderList.length)
+                                    ]
+                                )
+                            }
                         },
                     ]
                 }
