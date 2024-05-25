@@ -8,9 +8,10 @@ import { translateProductType } from '../utils/translateProductType'
 import moment from 'moment';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { ProductType } from '../constants/ProductType'
 
 const SalesReport = () => {
-    const [orderList, setOrderList] = useState(orders)
+    const [orderList, setOrderList] = useState([])
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
     const [serializedOrderList, setSerializedOrderList] = useState([])
     const [totalSales, setTotalSales] = useState(0)
@@ -32,50 +33,49 @@ const SalesReport = () => {
     ]
 
     useEffect(() => {
-        let isMounted = false
-
-        const fetchData = ()=>{
-            let serializedData = []
-            setTotalSales(0)
-            orderList.forEach(order => {
-                if(order.status !== 2) return
-    
-                const product = products.find(product => product.id === order.productID)
-                const soldOrders = orderList.filter(jOrder => jOrder.status === 2 && jOrder.productID === product.id)
-                let soldCount = 0
-                soldOrders.forEach(soldOrder => {
-                    soldCount += soldOrder.quantity
-                });
-    
-                serializedData.push(
-                    {
-                        id: order.id,
-                        date: new Date(order.date).toLocaleString(),
-                        product: product.name,
-                        type: translateProductType(product.type),
-                        price: product.price,
-                        sold: soldCount,
-                        sales: product.price * soldCount,
-                    }
-                )
-                setTotalSales(totalSales => totalSales += product.price * soldCount) 
-                
-            })
-            serializedData = sortBy(serializedData,"date",false)
-            setOriginalSerializedOrderList(serializedData)
-            setSerializedOrderList(serializedData) 
-        }
-
-        fetchData()
-        return ()=>{
-            isMounted =true
-        }
-        
+        fetch('http://localhost:3000/orders/status/2')
+        .then(response => response.json())
+        .then(body => {
+            setOrderList(body)
+        })
+        return () => {};
     }, []);
+
+    useEffect(() => {
+        const fetchProducts = async ()=>{
+          const tempOrderList = []
+          const promises = orderList.map(order => {
+            const promise = fetch(
+              `http://localhost:3000/products/${order.productID}`
+            ).then(response => response.json()).then(body=> {tempOrderList.push({...order, product: body})})
+            return promise
+          });
+          
+          await Promise.all(promises)
+
+          const tempSerialized = tempOrderList.map(order=>{
+            return({
+                date: new Date(order.date).toLocaleString(),
+                product: order.product.name,
+                type: ProductType.toString(order.product.type),
+                price: order.product.price,
+                sold: order.quantity,
+                sales: order.product.price * order.quantity 
+            })
+          })
+          setOriginalSerializedOrderList(sortBy(tempSerialized,"date",false))
+        }
+        fetchProducts()
+        return () => {
+          
+        };
+      }, [orderList]);
+
     
     useEffect(() => {
-        if(serializedOrderList.length !== 0){
-            const currentDate = moment(serializedOrderList[0].date)
+        console.log(originalSerializedOrderList)
+        if(originalSerializedOrderList.length !== 0){
+            const currentDate = moment(originalSerializedOrderList[0].date)
             let tempStartDate = moment(currentDate).day(0)
             let tempAddedDate = tempStartDate.clone().add(7,"d")
             let timeframeLength = 0
@@ -95,7 +95,8 @@ const SalesReport = () => {
             setStartDate(tempStartDate)
             setEndDate (tempAddedDate)
             const tempOrders = originalSerializedOrderList.filter(order=>moment(order.date).isBetween(tempStartDate.clone().subtract(1,"d"),tempAddedDate.clone().add(1,"d")))
-            setSerializedOrderList(tempOrders)           
+            setSerializedOrderList(tempOrders)    
+            console.log(tempOrders)       
             let sum = 0
             tempOrders.forEach(order=>{
                 sum += order.sales

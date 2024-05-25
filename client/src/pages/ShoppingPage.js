@@ -94,7 +94,7 @@ const ShoppingPage = () => {
             key={productItem._id} 
             product={productItem} 
             onClick={()=>{setIsPopupVisible(true);setCurrentProduct(productItem);}}
-            buttonHandler={()=>{handleAddToCartClick(productItem)}} 
+            buttonHandler={()=>{if(productItem.quantity !== 0) handleAddToCartClick(productItem)}} 
           />
         )}
       </div>
