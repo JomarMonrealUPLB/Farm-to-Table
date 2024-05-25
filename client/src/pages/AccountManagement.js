@@ -6,6 +6,7 @@ import DataTable from '../components/DataTable'
 import Header from '../components/Header'
 import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
+import { useRouteLoaderData } from 'react-router-dom'
 
 const AccountManagement = () => {
     const [userList, setuserList] = useState([])
@@ -20,7 +21,24 @@ const AccountManagement = () => {
             setuserList(body)
           })
       },[]);
+    
+    const handleDelete = (user_id)=> {
+        fetch(`http://localhost:3000/users/${user_id}`,
+      {
+        credentials: 'include',
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(response => {
+        response.text()
+        alert("User deleted!");
+        window.location.reload();
+      })
+      
 
+    }
       
     const dropDownOptionsLastName = [
         {name: "Last Name (A-Z)", value: "A-Z"},
@@ -45,7 +63,7 @@ const AccountManagement = () => {
         userList.forEach(user => {
             serializedData.push(
                 {
-                    user_id: user.id,
+                    user_id: user._id,
                     email: user.email,
                     firstName: user.firstName,
                     lastName: user.lastName,
@@ -57,7 +75,7 @@ const AccountManagement = () => {
                     {
                             label:"Delete Profile", 
                             buttonStyle: {backgroundColor : "var(--secondary-red)", hoverColor: "var(--secondary-red-hover)"} , 
-                            callback: ()=>{}
+                            callback: ()=>{handleDelete(user._id)}
                         },
                     ]
                 }

@@ -9,7 +9,7 @@ import images from '../assets/images/Farm-To-Table_Designs.png'
 const CustomerHomePage = () => {
   return (
     <div className='customer_homepage page'>
-      <div className='header'>
+      <div className='flexed_center'>
         <img src={images} className='homepage-header'/>
       </div>
       <hr></hr>
@@ -23,13 +23,13 @@ const CustomerHomePage = () => {
                 />
                 <Card 
                     title="Shop"
-                    image= {<MdOutlineShoppingBag size='160px' color ='white' />}
+                    image= {<MdOutlineShoppingBag size='150px' color ='white' />}
                     description="Choose a variety of products available at our shop"
                     path="/shopping-page"
                 />
                 <Card 
                     title="Shopping Cart"
-                    image={<MdOutlineShoppingCart size='160px' color='white'/>}
+                    image={<MdOutlineShoppingCart size='150px' color='white'/>}
                     description="View your own purchase history and other details"
                     path="/cart"
                 />

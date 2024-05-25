@@ -78,10 +78,7 @@
 .add-to-cart:hover {
     background-color: lightgray;
 }
-.header{
-    display: flex;
-    justify-content: center;
-}
+
 
 .homepage-header{
     width:80%;
