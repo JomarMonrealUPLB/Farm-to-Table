@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import SearchBox from '../components/SearchBox'
 import DropDown1 from '../components/DropDown1'
-import {orders} from "../assets/dummy_data/orders"
 import DataTable from '../components/DataTable'
 import Header from '../components/Header'
 import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
-import { products } from '../assets/dummy_data/products'
 import { translateStatus } from '../utils/translateStatus'
 import Popup from '../components/Popup'
 import ViewOrderScreen from '../components/PopupScreens/ViewOrderScreen'
