@@ -9,6 +9,12 @@ const getOrderById = async (req, res) => {
     res.send(await Order.findById(req.params.id))
 }
 
+const getPendingOrderByEmail = async (req, res) => {
+    const result = await Order.findOne({email: req.query.email, productID: req.query.productID ,status: 0})
+    if(result) res.send(result)
+    else res.send({})
+}
+
 const getOrdersWithStatusNumber = async (req, res) => {
     let num = parseInt(req.params.num)
     res.send(await Order.find({status: num}))
@@ -54,6 +60,7 @@ export {
     getAllOrders, 
     getOrderById, 
     getOrdersWithStatusNumber, 
+    getPendingOrderByEmail,
     createOrder, 
     updateOrder, 
     deleteOrder,
