@@ -82,15 +82,16 @@ const OrderFulfillment = () => {
                                 {
                                     label:"Fulfill Order", 
                                     buttonStyle: {backgroundColor : "var(--primary-green)", hoverColor: "var(--primary-green-hover)"} ,
-                                    callback: ()=>{
-                                        handleOrderFulfillmentClick(order, 2)
-                                        setOrderList(
-                                            [
-                                                ...orderList.slice(0, index),
-                                                {...orderList[index], status: 2},
-                                                ...orderList.slice(index+1, orderList.length)
-                                            ]
-                                        )
+                                    callback: async ()=>{
+                                        if(await handleOrderFulfillmentClick(order, 2) !== "error"){
+                                            setOrderList(
+                                                [
+                                                    ...orderList.slice(0, index),
+                                                    {...orderList[index], status: 2},
+                                                    ...orderList.slice(index+1, orderList.length)
+                                                ]
+                                            )
+                                        }
                                     }
                                 },
                                 {
