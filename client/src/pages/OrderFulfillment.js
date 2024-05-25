@@ -8,11 +8,15 @@ import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
 import { products } from '../assets/dummy_data/products'
 import { translateStatus } from '../utils/translateStatus'
+import Popup from '../components/Popup'
+import ViewOrderScreen from '../components/PopupScreens/ViewOrderScreen'
 
 const OrderFulfillment = () => {
     const [orderList, setOrderList] = useState([])
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
     const [serializedOrderList, setSerializedOrderList] = useState([])
+    const [isPopupVisibile, setIsPopupVisibile] = useState(false)
+    const [currentProduct, setCurrentProduct] = useState()
 
     const dropDownOptionsDate = [
         {name: "Date (latest-oldest)", value: "latest-oldest"},
@@ -52,14 +56,14 @@ const OrderFulfillment = () => {
                     id: order.id,
                     date: new Date(order.date).toLocaleString(),
                     email: order.email,
-                    product: products.find(product => product.id === order.productID).name,
+                    product: products[0].name,
                     quantity: order.quantity,
                     status: translateStatus( order.status),
                     actions: [
                         {
                             label:"View Order", 
                             buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
-                            callback: ()=>{}
+                            callback: ()=>{setCurrentProduct(products[0]);setIsPopupVisibile(true)}
                         },
                         {
                             label:"Fulfill Order", 
@@ -105,6 +109,8 @@ const OrderFulfillment = () => {
         <hr/>
 
         <DataTable data={serializedOrderList} heads={heads}/>
+
+        {isPopupVisibile?<Popup child={<ViewOrderScreen product={currentProduct} onCloseClick={()=>setIsPopupVisibile(false)}/>} onOutsideClick={()=>setIsPopupVisibile(false)}/>:null}
 
     </div>
     )
