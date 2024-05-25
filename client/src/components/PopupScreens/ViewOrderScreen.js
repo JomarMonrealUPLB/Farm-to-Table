@@ -29,31 +29,17 @@ const ViewOrderScreen = (props) => {
         </div>
         <div style={{display: "flex", width:"100%"}}>
             <div className='product_detail_stat'>
-                <strong>Product Type:</strong>
-                <span>{ProductType.toString(product.type)}</span>
+                
+                <span style={{padding:"0"}}><strong>Product Type: </strong>{ProductType.toString(product.type)}</span>
                 <div style={{fontStyle:"italic"}}>{product.quantity === 0? "Out of Stock":"In Stock" }</div>
                 <div>P {product.price} / kg</div>
-                <div><strong>Total: </strong> P {product.price * productOrderCount}</div>
+                <span style={{padding:"0"}}><strong>Product quantity: </strong>{props.quantity} kg</span>
             </div>
-            <div className='product_detail_order'>
-                <CiCircleMinus
-                    size={"40px"} 
-                    color='var(--primary-green)' 
-                    cursor={"pointer"} 
-                    onClick={()=>{
-                        setProductOrderCount(productOrderCount=> productOrderCount===0 ? productOrderCount : productOrderCount-1)
-                    }}
-                />
-                <div style={{padding:"1rem"}}>{productOrderCount}</div>
-                    <CiCirclePlus
-                        size={"40px"} 
-                        color='var(--primary-green)' 
-                        cursor={"pointer"} 
-                        onClick={()=>{
-                            setProductOrderCount(productOrderCount=>productOrderCount+1)
-                        }}
-                    />
-                </div>
+            <div className='product_detail_order' style={{flexDirection:"column",justifyContent:"start"}}>
+                
+                <div style={{fontSize:"20px"}}><strong>Total: </strong> P {product.price * props.quantity}</div>
+                   
+            </div>
         </div>
         <div style={{display:"flex", justifyContent:"center"}}>
             

@@ -18,12 +18,20 @@ const getProductName = async (id) => {
     return result.name
 }
 
+const getProduct = async (id) => {
+    const result = await fetch(
+        `http://localhost:3000/products/${id}`
+    ).then(response => response.json())
+    return result
+}
+
 const OrderFulfillment = () => {
     const [orderList, setOrderList] = useState([])
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
     const [serializedOrderList, setSerializedOrderList] = useState([])
     const [isPopupVisibile, setIsPopupVisibile] = useState(false)
     const [currentProduct, setCurrentProduct] = useState()
+    const [currentQuantity, setCurrentQuantity] = useState(0)
 
     const dropDownOptionsDate = [
         {name: "Date (latest-oldest)", value: "latest-oldest"},
@@ -69,7 +77,7 @@ const OrderFulfillment = () => {
                                 {
                                     label:"View Order", 
                                     buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
-                                    callback: ()=>{getProductName(order.productID);setCurrentProduct(products[0]);setIsPopupVisibile(true)}
+                                    callback: async ()=>{setCurrentProduct(await getProduct(order.productID));setCurrentQuantity(order.quantity);setIsPopupVisibile(true)}
                                 },
                                 {
                                     label:"Fulfill Order", 
@@ -135,7 +143,7 @@ const OrderFulfillment = () => {
 
         <DataTable data={serializedOrderList} heads={heads}/>
 
-        {isPopupVisibile?<Popup child={<ViewOrderScreen product={currentProduct} onCloseClick={()=>setIsPopupVisibile(false)}/>} onOutsideClick={()=>setIsPopupVisibile(false)}/>:null}
+        {isPopupVisibile?<Popup child={<ViewOrderScreen product={currentProduct} quantity={currentQuantity} onCloseClick={()=>setIsPopupVisibile(false)}/>} onOutsideClick={()=>setIsPopupVisibile(false)}/>:null}
 
     </div>
     )
