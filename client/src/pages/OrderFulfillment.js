@@ -5,6 +5,7 @@ import DataTable from '../components/DataTable'
 import Header from '../components/Header'
 import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
+import {products} from "../assets/dummy_data/products.js"
 import { translateStatus } from '../utils/translateStatus'
 import Popup from '../components/Popup'
 import ViewOrderScreen from '../components/PopupScreens/ViewOrderScreen'
