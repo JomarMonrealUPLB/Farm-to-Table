@@ -52,6 +52,10 @@ const deleteOrder = async (req, res) => {
     res.send({deleted: true})
 }
 
+const deleteOrderByEmail = async (req, res) => {
+    res.send(await Order.deleteMany({email: req.query.email}))
+}
+
 const getCart = async (req, res) => {
     res.send(await Order.find({email: req.params.email, status: 0}))
 }
@@ -64,5 +68,6 @@ export {
     createOrder, 
     updateOrder, 
     deleteOrder,
+    deleteOrderByEmail,
     getCart
 }

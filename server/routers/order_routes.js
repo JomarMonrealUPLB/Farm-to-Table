@@ -1,4 +1,4 @@
-import { getPendingOrderByEmail, getOrderById, getAllOrders, getOrdersWithStatusNumber, createOrder, updateOrder, deleteOrder, getCart } from "../controllers/order_controller.js";
+import { getPendingOrderByEmail, getOrderById, getAllOrders, getOrdersWithStatusNumber, createOrder, updateOrder, deleteOrder, deleteOrderByEmail, getCart } from "../controllers/order_controller.js";
 
 const ordersRouter = (app) => {
     app.get('/cart/:email', getCart)
@@ -10,6 +10,7 @@ const ordersRouter = (app) => {
     app.post('/orders', createOrder)
     app.patch('/orders/:id', updateOrder)
     app.delete('/orders/:id', deleteOrder)
+    app.delete('/delete-by-email', deleteOrderByEmail)
 }
 
 export default ordersRouter;
