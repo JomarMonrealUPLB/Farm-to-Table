@@ -8,6 +8,13 @@ import findEntries  from '../utils/findEntries'
 import { translateStatus } from '../utils/translateStatus'
 import handleOrderFulfillmentClick from '../eventhandlers/OrderFulfillmentHandler'
 
+const getProductName = async (id) => {
+    const result = await fetch(
+        `http://localhost:3000/products/${id}`
+    ).then(response => response.json())
+    return result.name
+}
+
 const OrderFulfillment = () => {
     const [orderList, setOrderList] = useState([])
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
@@ -41,63 +48,65 @@ const OrderFulfillment = () => {
     },[])
 
     useEffect(() => {
-        const serializedData = []
-        orderList.forEach((order, index) => {
-            if(order.status !== 1) return
-
-            serializedData.push(
-                {
-                    id: order._id,
-                    date: new Date(order.date).toLocaleString(),
-                    email: order.email,
-                    product: "Manok",
-                    quantity: order.quantity,
-                    status: translateStatus(order.status),
-                    actions: [
-                        {
-                            label:"View Order", 
-                            buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
-                            callback: ()=>{}
-                        },
-                        {
-                            label:"Fulfill Order", 
-                            buttonStyle: {backgroundColor : "var(--primary-green)", hoverColor: "var(--primary-green-hover)"} ,
-                            callback: ()=>{
-                                handleOrderFulfillmentClick(order, 2)
-                                setOrderList(
-                                    [
-                                        ...orderList.slice(0, index),
-                                        {...orderList[index], status: 2},
-                                        ...orderList.slice(index+1, orderList.length)
-                                    ]
-                                )
-                            }
-                        },
-                        {
-                            label:"Cancel Order", 
-                            buttonStyle: {backgroundColor : "var(--secondary-red)", hoverColor: "var(--secondary-red-hover)"} , 
-                            callback: ()=>{
-                                handleOrderFulfillmentClick(order, 3)
-                                setOrderList(
-                                    [
-                                        ...orderList.slice(0, index),
-                                        {...orderList[index], status: 3},
-                                        ...orderList.slice(index+1, orderList.length)
-                                    ]
-                                )
-                            }
-                        },
-                    ]
-                }
+        const fetchAndSerializeData = async () => {
+            const serializedData = await Promise.all(
+                orderList.map(async (order, index) => {
+                    if(order.status === 1){
+                        const productName = await getProductName(order.productID)
+                        return{
+                            id: order._id,
+                            date: new Date(order.date).toLocaleString(),
+                            email: order.email,
+                            product: productName,
+                            quantity: order.quantity,
+                            status: translateStatus(order.status),
+                            actions: [
+                                {
+                                    label:"View Order", 
+                                    buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
+                                    callback: ()=>{getProductName(order.productID)}
+                                },
+                                {
+                                    label:"Fulfill Order", 
+                                    buttonStyle: {backgroundColor : "var(--primary-green)", hoverColor: "var(--primary-green-hover)"} ,
+                                    callback: ()=>{
+                                        handleOrderFulfillmentClick(order, 2)
+                                        setOrderList(
+                                            [
+                                                ...orderList.slice(0, index),
+                                                {...orderList[index], status: 2},
+                                                ...orderList.slice(index+1, orderList.length)
+                                            ]
+                                        )
+                                    }
+                                },
+                                {
+                                    label:"Cancel Order", 
+                                    buttonStyle: {backgroundColor : "var(--secondary-red)", hoverColor: "var(--secondary-red-hover)"} , 
+                                    callback: ()=>{
+                                        handleOrderFulfillmentClick(order, 3)
+                                        setOrderList(
+                                            [
+                                                ...orderList.slice(0, index),
+                                                {...orderList[index], status: 3},
+                                                ...orderList.slice(index+1, orderList.length)
+                                            ]
+                                        )
+                                    }
+                                },
+                            ]
+                        }
+                    }
+                    return null;
+                })
             )
-            
-        })
-        setOriginalSerializedOrderList(sortBy(serializedData,"lastName",true))
-        setSerializedOrderList(sortBy(serializedData,"lastName",true))
-    }, [orderList]);
+            const filteredData = serializedData.filter(element => element !== null)
+            setOriginalSerializedOrderList(sortBy(filteredData, "lastName", true))
+            setSerializedOrderList(sortBy(filteredData, "lastName", true))
+        }
+        fetchAndSerializeData()
+    }, [orderList])
     
-    
-
     const sortData = (dropDownValue, key) => {
         if(dropDownValue === "A-Z" || dropDownValue == "oldest-latest"){
             setSerializedOrderList(sortBy(originalSerializedOrderList,key,true))
@@ -105,8 +114,7 @@ const OrderFulfillment = () => {
             setSerializedOrderList(sortBy(originalSerializedOrderList,key,false))
         }
     }
-
-
+    
     return (
     <div className='account_management page'>
         <Header headerTitle={"Order FulFillment"}/>
