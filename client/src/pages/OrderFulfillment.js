@@ -10,7 +10,7 @@ import { products } from '../assets/dummy_data/products'
 import { translateStatus } from '../utils/translateStatus'
 
 const OrderFulfillment = () => {
-    const [orderList, setOrderList] = useState(orders)
+    const [orderList, setOrderList] = useState([])
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
     const [serializedOrderList, setSerializedOrderList] = useState([])
 
@@ -32,6 +32,15 @@ const OrderFulfillment = () => {
         {label: "Status"}, 
         {label: "Actions"}
     ]
+
+    useEffect(() => {
+        fetch('http://localhost:3000/orders')
+        .then(response => response.json())
+        .then(body => {
+            console.log(body)
+            setOrderList(body)
+        })
+    },[])
 
     useEffect(() => {
         const serializedData = []
@@ -69,7 +78,7 @@ const OrderFulfillment = () => {
         })
         setOriginalSerializedOrderList(sortBy(serializedData,"lastName",true))
         setSerializedOrderList(sortBy(serializedData,"lastName",true))
-    }, []);
+    }, [orderList]);
     
     
 
