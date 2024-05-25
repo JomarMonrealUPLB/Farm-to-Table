@@ -8,6 +8,7 @@ import { CiCircleMinus } from "react-icons/ci";
 import { iconColor } from '../../constants/IconSize';
 import { PiShoppingCartSimpleLight } from 'react-icons/pi';
 import { ProductType } from '../../constants/ProductType';
+import handleAddToCartClick from '../../eventhandlers/AddToCartHandler';
 
 
 
@@ -74,10 +75,12 @@ const ProductDetailScreen = (props) => {
         </div>
         <div style={{display:"flex", justifyContent:"center"}}>
             
-            <button className='product_item-button' onClick={()=>{}} style={{width:"50%"}}>
-                <PiShoppingCartSimpleLight color={iconColor} size={'3ch'}/>
-                Add To Cart
-            </button>
+        <button className='product_item-button' 
+            onClick={()=>{if(product.quantity > 0) handleAddToCartClick(product)}} 
+            style={{backgroundColor: product.quantity === 0? "#777777": "var(--primary-green-dark)" ,width:"50%"}}>
+            <PiShoppingCartSimpleLight color={iconColor} size={'3ch'}/>
+            {product.quantity === 0?  "Out of Stock" : "Add To Cart"}
+        </button>
         </div>
     </div>
     )
