@@ -9,11 +9,15 @@ import DataTable from '../components/DataTable'
 import { Link } from 'react-router-dom'
 import { IoIosAdd } from "react-icons/io";
 import './ProductListingsPage.css'
+import Popup from "../components/Popup.js"
+import ViewProductScreen from '../components/PopupScreens/ViewProductScreen'
 
 const ProductListingsPage = () => {
     const [productList, setproductList] = useState(products)
     const [originalSerializedProductList, setOriginalSerializedProductList] = useState([])
     const [serializedProductList, setserializedProductList] = useState([])
+    const [currentProduct, setCurrentProduct] = useState()
+    const [isPopupVisibile, setisPopupVisibile] = useState(false)
 
     const filterOptions = [
         {name: 'None', value: 'none'},
@@ -54,7 +58,7 @@ const ProductListingsPage = () => {
                         {
                             label:"View Product", 
                             buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
-                            callback: ()=>{}
+                            callback: ()=>{setCurrentProduct(product);setisPopupVisibile(true)}
                         },
                         {
                             label: "Edit Product",
@@ -102,7 +106,10 @@ const ProductListingsPage = () => {
                     </button>
                 </Link>
             </div>
+
             <DataTable data={serializedProductList} heads={heads}/>
+
+            {isPopupVisibile?<Popup child={<ViewProductScreen product={currentProduct} onCloseClick={()=>setisPopupVisibile(false)}/>} onOutsideClick={()=>setisPopupVisibile(false)}/>:null}
         </div>
     )
 }

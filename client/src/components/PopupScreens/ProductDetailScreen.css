@@ -3,6 +3,7 @@
     padding: 1ch;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .product_detail_screen-image{

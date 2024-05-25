@@ -5,13 +5,18 @@ import DataTable from '../components/DataTable'
 import Header from '../components/Header'
 import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
+import {products} from "../assets/dummy_data/products.js"
 import { translateStatus } from '../utils/translateStatus'
+import Popup from '../components/Popup'
+import ViewOrderScreen from '../components/PopupScreens/ViewOrderScreen'
 import handleOrderFulfillmentClick from '../eventhandlers/OrderFulfillmentHandler'
 
 const OrderFulfillment = () => {
     const [orderList, setOrderList] = useState([])
     const [originalSerializedOrderList, setOriginalSerializedOrderList] = useState([])
     const [serializedOrderList, setSerializedOrderList] = useState([])
+    const [isPopupVisibile, setIsPopupVisibile] = useState(false)
+    const [currentProduct, setCurrentProduct] = useState()
 
     const dropDownOptionsDate = [
         {name: "Date (latest-oldest)", value: "latest-oldest"},
@@ -57,7 +62,7 @@ const OrderFulfillment = () => {
                         {
                             label:"View Order", 
                             buttonStyle: {backgroundColor : "#777777", hoverColor: "#444444"} ,
-                            callback: ()=>{}
+                            callback: ()=>{setCurrentProduct(products[0]);setIsPopupVisibile(true)}
                         },
                         {
                             label:"Fulfill Order", 
@@ -121,6 +126,8 @@ const OrderFulfillment = () => {
         <hr/>
 
         <DataTable data={serializedOrderList} heads={heads}/>
+
+        {isPopupVisibile?<Popup child={<ViewOrderScreen product={currentProduct} onCloseClick={()=>setIsPopupVisibile(false)}/>} onOutsideClick={()=>setIsPopupVisibile(false)}/>:null}
 
     </div>
     )

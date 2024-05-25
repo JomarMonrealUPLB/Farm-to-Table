@@ -11,35 +11,18 @@ import { ProductType } from '../../constants/ProductType';
 
 
 
-const ProductDetailScreen = (props) => {
+const ViewOrderScreen = (props) => {
     const [product,setProduct] = useState(props.product) 
     const [productOrderCount, setProductOrderCount] = useState(0)
     const productList = props.productList
-    const productIndex = productList.map(temp=>temp.id).indexOf(product.id)
     
 
     return (
     <div className='product_detail_screen'>
         <IoIosCloseCircleOutline size={"40px"} color='var(--primary-green)' cursor={"pointer"} onClick={props.onCloseClick}/>
         <img className='product_detail_screen-image' src={product? product.image: ""} alt={"Product image"}/>
-        <div className='product_detail_screen-carousel'>
-            <MdKeyboardArrowLeft 
-                size={"40px"} 
-                color='var(--primary-green)' 
-                cursor={"pointer"} 
-                onClick={()=>{
-                    setProduct(productList[productIndex==0? productList.length-1:(productIndex-1)])
-                }}
-            />
+        <div className='product_detail_screen-carousel' style={{justifyContent:"center"}}>
             <h1 style={{textAlign:"center", userSelect:"none"}}>{product.name}</h1>
-            <MdKeyboardArrowRight
-                size={"40px"} 
-                color='var(--primary-green)' 
-                cursor={"pointer"} 
-                onClick={()=>{
-                    setProduct(productList[(productIndex+1)%productList.length])
-                }}
-            />
         </div>
         <div style={{display: "flex", justifyContent:"center", padding:"0 10%"}}>
             <p style={{textAlign: "center"}}>{product.description}</p>
@@ -74,13 +57,10 @@ const ProductDetailScreen = (props) => {
         </div>
         <div style={{display:"flex", justifyContent:"center"}}>
             
-            <button className='product_item-button' onClick={()=>{}} style={{width:"50%"}}>
-                <PiShoppingCartSimpleLight color={iconColor} size={'3ch'}/>
-                Add To Cart
-            </button>
+
         </div>
     </div>
     )
 }
 
-export default ProductDetailScreen
+export default ViewOrderScreen
