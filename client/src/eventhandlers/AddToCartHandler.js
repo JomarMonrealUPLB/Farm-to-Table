@@ -18,6 +18,7 @@ const handleAddToCartClick = async (product) => {
         }
       ).then(response => response.json())
       console.log(updateResult)
+      alert("Added to cart!")
     }
   
     //create new order
@@ -41,6 +42,7 @@ const handleAddToCartClick = async (product) => {
         }
       ).then(response => response.json())
       console.log(insertResult)
+      alert("Added to cart!")
     }
   }
 
