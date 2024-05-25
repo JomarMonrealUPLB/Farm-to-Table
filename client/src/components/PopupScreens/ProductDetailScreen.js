@@ -15,7 +15,6 @@ const ProductDetailScreen = (props) => {
     const [product,setProduct] = useState(props.product) 
     const [productOrderCount, setProductOrderCount] = useState(0)
     const productList = props.productList
-    console.log(productList,product)
     const productIndex = productList.map(temp=>temp._id).indexOf(product._id)
     
 
