@@ -13,6 +13,7 @@ import OrderFulfillment from "./pages/OrderFulfillment";
 import ProductListingsPage from "./pages/ProductListingsPage";
 import SalesReport from "./pages/SalesReport";
 import AddProductPage from "./pages/AddProductPage";
+import ProfilePage from "./pages/ProfilePage"
 import { UserType } from "./constants/UserType";
 import { iconColor, iconSize } from './constants/IconSize';
 
@@ -41,6 +42,7 @@ const App  =() =>{
     {path: "/shopping-page", element: <ShoppingPage />, visibility: [UserType.CUSTOMER],icon: <LiaShoppingBagSolid color={iconColor} size={iconSize}/>},
     {path: "/cart", element: <CartPage />, visibility: [UserType.CUSTOMER],icon: <PiShoppingCartSimpleLight color={iconColor} size={iconSize}/>},
     {path: "/account-management", element: <AccountManagement />, visibility: [UserType.MERCHANT],icon: <MdOutlineManageAccounts color={iconColor} size={iconSize}/>},
+    {path: "/profile-page/:id", element: <ProfilePage />, visibility: [UserType.MERCHANT]},
     {path: "/order-fulfillment", element: <OrderFulfillment />, visibility: [UserType.MERCHANT],icon: <IoReceiptOutline color={iconColor} size={iconSize}/>},
     {path: "/product-listings", element: <ProductListingsPage />, visibility: [UserType.MERCHANT],icon: <MdFormatListBulleted color={iconColor} size={iconSize}/>},
     {path: "/sales-report", element: <SalesReport />, visibility: [UserType.MERCHANT],icon: <TbReport color={iconColor} size={iconSize}/>},

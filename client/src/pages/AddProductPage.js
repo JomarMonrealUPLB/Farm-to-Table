@@ -34,7 +34,19 @@ const AddProductPage = () => {
             quantity: quantity
           };
         
-        dummyProducts.push(newProduct);
+        //add new product to database
+        fetch('http://localhost:3000/products',
+        {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newProduct)
+        })
+        .then(response => {
+        response.text()
+        alert("Product added!");
+        })
 
         //reset form 
         setName('Product Name');
@@ -45,6 +57,7 @@ const AddProductPage = () => {
         setQuantity('0');
 
         alert('Product added successfully!');
+        
     
       }
 
