@@ -27,6 +27,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { LuLogOut } from "react-icons/lu";
+import EditProductPage from "./pages/EditProductPage";
 
 
 
@@ -42,11 +43,12 @@ const App  =() =>{
     {path: "/shopping-page", element: <ShoppingPage />, visibility: [UserType.CUSTOMER],icon: <LiaShoppingBagSolid color={iconColor} size={iconSize}/>},
     {path: "/cart", element: <CartPage />, visibility: [UserType.CUSTOMER],icon: <PiShoppingCartSimpleLight color={iconColor} size={iconSize}/>},
     {path: "/account-management", element: <AccountManagement />, visibility: [UserType.MERCHANT],icon: <MdOutlineManageAccounts color={iconColor} size={iconSize}/>},
-    {path: "/profile-page/:id", element: <ProfilePage />, visibility: [UserType.MERCHANT,UserType.CUSTOMER]},
+    {path: "/profile-page/:id", element: <ProfilePage />, visibility: ["no_nav",UserType.MERCHANT,UserType.CUSTOMER]},
     {path: "/order-fulfillment", element: <OrderFulfillment />, visibility: [UserType.MERCHANT],icon: <IoReceiptOutline color={iconColor} size={iconSize}/>},
     {path: "/product-listings", element: <ProductListingsPage />, visibility: [UserType.MERCHANT],icon: <MdFormatListBulleted color={iconColor} size={iconSize}/>},
     {path: "/sales-report", element: <SalesReport />, visibility: [UserType.MERCHANT],icon: <TbReport color={iconColor} size={iconSize}/>},
     {path: "/add-product", element: <AddProductPage />, visibility: [UserType.MERCHANT],icon: <IoIosAddCircleOutline color={iconColor} size={iconSize}/>},
+    {path: "/edit-product/:id", element: <EditProductPage />, visibility: ["no_nav",UserType.MERCHANT]},
     {path: "/logout", element: <Navigate to="/"/>, visibility: ["all"], icon: <LuLogOut color={iconColor} size={"3.5ch"}/>},
     {path: "/*", element: <NoPage />, visibility: ["none"]},
   ]
