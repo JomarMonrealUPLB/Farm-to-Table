@@ -34,7 +34,7 @@ const Login = (props) => {
     const user = await userRaw.json()
 
     //Checks if user exists and checks if the passwords match
-    if(user){
+    if(user[0] !== null){
       sessionStorage.setItem("userType", user.type)
       sessionStorage.setItem("userEmail", user.email)
       sessionStorage.setItem("userId", user.id)

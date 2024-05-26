@@ -67,7 +67,7 @@ const App  =() =>{
   return (
     <div className="App">
       <BrowserRouter>
-        {userType === UserType.GUEST? null : <NavBar onLogout={()=>setUserType(UserType.GUEST)} navBarItems = {routeList.filter(route=> route.visibility[0] !== "no_nav" && (route.visibility.includes("all") || route.visibility.includes(userType)) )}/>}
+        {userType && userType !== UserType.GUEST? <NavBar onLogout={()=>setUserType(UserType.GUEST)} navBarItems = {routeList.filter(route=> route.visibility[0] !== "no_nav" && (route.visibility.includes("all") || route.visibility.includes(userType)) )}/> : null}
         <div className="web_body">
           <Routes>
               {
