@@ -20,6 +20,7 @@ const CustomerHomePage = () => {
                     title="Your Profile"
                     image = {<CgProfile size ='150px' color='white' />}
                     description="Personalize to your own preference"
+                    path={`/profile-page/${sessionStorage.getItem("userId")}`}
                 />
                 <Card 
                     title="Shop"

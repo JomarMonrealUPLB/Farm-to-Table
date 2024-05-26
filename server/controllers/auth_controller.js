@@ -12,7 +12,7 @@ export const createNewSession = async (req, res)=>{
         res.status(401).send(["Invalid credentials"])
         return
     }
-    req.session.profile =  user? {email: req.body.email, type: user.type} : null
+    req.session.profile =  user? {id: user._id,email: req.body.email, type: user.type} : null
     req.session.loggedIn = true
     console.log(req.session.profile)
     console.log(["session created"])

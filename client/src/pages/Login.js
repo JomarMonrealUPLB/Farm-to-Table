@@ -37,6 +37,7 @@ const Login = (props) => {
     if(user){
       sessionStorage.setItem("userType", user.type)
       sessionStorage.setItem("userEmail", user.email)
+      sessionStorage.setItem("userId", user.id)
 
       if(user.type === 'customer'){
         //Customer HomePage
@@ -61,6 +62,7 @@ const Login = (props) => {
   useEffect(() => {
     sessionStorage.setItem("userType", UserType.GUEST)
     sessionStorage.setItem("userEmail", "")
+    sessionStorage.setItem("userId", "")
   }, []);
 
   return (
