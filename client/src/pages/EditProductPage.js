@@ -4,10 +4,13 @@ import {products} from '../assets/dummy_data/products'
 import ProductDisplay from '../components/ProductDisplay'
 
 import '../components/AddProduct.css';
+import { useParams } from 'react-router-dom';
 
-const AddProductPage = () => {
+const EditProductPage = () => {
+    const {id} = useParams();
     const dummyProducts = products;
 
+    const [currentProduct, setCurrentProduct] = useState(null);
     const [name, setName] = useState('Product Name');
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('The description of the product.');
@@ -35,9 +38,9 @@ const AddProductPage = () => {
           };
         
         //add new product to database
-        fetch('http://localhost:3000/products',
+        fetch(`http://localhost:3000/products/${id}`,
         {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -45,7 +48,8 @@ const AddProductPage = () => {
         })
         .then(response => {
         response.text()
-        alert("Product added!");
+        alert("Product updated successfully!");
+        window.location.href = "http://localhost:3001/product-listings"
         })
 
         //reset form 
@@ -54,12 +58,31 @@ const AddProductPage = () => {
         setDescription('The description of the product.');
         setType('1');
         setPrice('-');
-        setQuantity('0');
-
-        alert('Product added successfully!');
+        setQuantity('0');      
+        
         
     
       }
+    
+    useEffect(() => {
+        fetch(`http://localhost:3000/products/${id}`)
+        .then(response => response.json())
+        .then(body => {
+            setCurrentProduct(body);
+        })
+    }, []);
+
+    useEffect(() => {
+        if(currentProduct){
+
+            setName(currentProduct.name);
+            setImage(currentProduct.image);
+            setDescription(currentProduct.description);
+            setType(currentProduct.type);
+            setPrice(currentProduct.price);
+            setQuantity(currentProduct.quantity);  
+        }
+    }, [currentProduct]);
 
     
     return (
@@ -70,7 +93,7 @@ const AddProductPage = () => {
                 </div>
 
                 <div className='add_product-main'>
-                    <h1>Add Product</h1>
+                    <h1>Edit Product</h1>
                     <form className='add_product-form' onSubmit={handleAddProduct}>
                         <div>
                             <label>Name </label>
@@ -100,7 +123,7 @@ const AddProductPage = () => {
                             </div>
 
                         </div>
-                    <button type="submit">Add Product</button>
+                    <button type="submit">Update Product</button>
 
                     </form>
                     
@@ -117,5 +140,5 @@ const AddProductPage = () => {
 
 }
 
-export default AddProductPage
+export default EditProductPage
 
