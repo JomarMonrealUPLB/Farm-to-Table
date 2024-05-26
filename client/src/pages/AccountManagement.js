@@ -6,12 +6,13 @@ import DataTable from '../components/DataTable'
 import Header from '../components/Header'
 import { sortBy } from '../utils/sortBy'
 import findEntries  from '../utils/findEntries'
-import { useRouteLoaderData } from 'react-router-dom'
+import { useRouteLoaderData, useNavigate } from 'react-router-dom'
 
 const AccountManagement = () => {
     const [userList, setuserList] = useState([])
     const [originalSerializedUserList, setOriginalSerializedUserList] = useState([])
     const [serializedUserList, setSerializedUserList] = useState([])
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:3000/users')
@@ -71,7 +72,7 @@ const AccountManagement = () => {
                     {
                             label:"View Profile", 
                             buttonStyle: {backgroundColor : "var(--primary-green)", hoverColor: "var(--primary-green-hover)"} ,
-                            callback: ()=>{}},
+                            callback: ()=>{navigate(`/profile-page/${user._id}`);}},
                     {
                             label:"Delete Profile", 
                             buttonStyle: {backgroundColor : "var(--secondary-red)", hoverColor: "var(--secondary-red-hover)"} , 
