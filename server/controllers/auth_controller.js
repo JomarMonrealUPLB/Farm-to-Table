@@ -3,16 +3,16 @@ import { User } from "../models/user.js"
 export const createNewSession = async (req, res)=>{
     if(!req.body){
         console.log(["Please add a body {email,password}"])
-        res.status(401).send("No Body")
+        res.status(401).send([null])
         return
     }
     const user = await User.findOne({email: req.body.email, password: req.body.password})
     if(user === null){
         console.log("Your credentials can't be seen in the database.")
-        res.status(401).send(["Invalid credentials"])
+        res.status(401).send([null])
         return
     }
-    req.session.profile =  user? {email: req.body.email, type: user.type} : null
+    req.session.profile =  user? {id: user._id,email: req.body.email, type: user.type} : null
     req.session.loggedIn = true
     console.log(req.session.profile)
     console.log(["session created"])

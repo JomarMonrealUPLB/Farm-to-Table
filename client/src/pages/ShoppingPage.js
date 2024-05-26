@@ -23,7 +23,7 @@ const ShoppingPage = () => {
     {name: 'Price (low - high)', value: 'low-high'},
     {name: 'Price (high - low)', value: 'high-low'},
     {name: 'Name (A - Z)', value: 'a-z'},
-    {name: 'Name(Z - A)', value: 'z-a'}
+    {name: 'Name (Z - A)', value: 'z-a'}
   ]
 
   const filterOptions = [

@@ -34,9 +34,10 @@ const Login = (props) => {
     const user = await userRaw.json()
 
     //Checks if user exists and checks if the passwords match
-    if(user){
+    if(user[0] !== null){
       sessionStorage.setItem("userType", user.type)
       sessionStorage.setItem("userEmail", user.email)
+      sessionStorage.setItem("userId", user.id)
 
       if(user.type === 'customer'){
         //Customer HomePage
@@ -61,6 +62,7 @@ const Login = (props) => {
   useEffect(() => {
     sessionStorage.setItem("userType", UserType.GUEST)
     sessionStorage.setItem("userEmail", "")
+    sessionStorage.setItem("userId", "")
   }, []);
 
   return (

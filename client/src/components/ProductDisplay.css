@@ -4,7 +4,9 @@
     color: white; 
     text-align: center;
     height: 85vh;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
 .product_display-card h1{
