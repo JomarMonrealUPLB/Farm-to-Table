@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import header from '../assets/images/Farm-To-Table_Designs.png'
 import profile from '../assets/images/profile-picture.png'
 
 import '../components/ProfilePage.css';
 import { UserType } from '../constants/UserType';
+import Header from '../components/Header';
+import OrderTabs from '../components/OrderTabs';
 
 const ProfilePage = () => {
     const {id} = useParams();
@@ -23,14 +24,7 @@ const ProfilePage = () => {
 
 return(
     <div className='profile_page page'>
-        <div className='flexed_center'>
-        <img src={header} className='homepage-header'/>
-        </div>
-
-        <hr></hr>
-        <h1>Profile</h1>
-        <hr></hr>
-
+        <Header headerTitle={'User Profile'}/>
         <div className='profile_page-main-container'>
             <div className='profile-page-left'>
                 <img src={profile} className='profile-picture'/>      
@@ -64,46 +58,42 @@ return(
 
             <div className='profile-page-right'>
                 <div className='profile-page-gen-info'>
-                <h1>General Information</h1>    
-                <p><strong>User ID:</strong> 
-                   <span style={{display: "block", padding: "0px"}}>{user._id}</span> </p>
-                <p><strong>First Name:</strong> 
-                    <input 
-                        className='editable_text' 
-                        type='text' value={user.firstName} 
-                        style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
-                        onChange={(e)=>setUser({...user, firstName: e.target.value })}
-                        /> </p>
-                <p><strong>Middle Name:</strong> 
-                    <input 
-                        className='editable_text' 
-                        type='text' value={user.middleName} 
-                        style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
-                        onChange={(e)=>setUser({...user, middleName: e.target.value })}
-                        /></p>
-                <p><strong>Last Name:</strong> 
-                    <input 
-                        className='editable_text' 
-                        type='text' value={user.lastName} 
-                        style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
-                        onChange={(e)=>setUser({...user, lastName: e.target.value })}
-                        /></p>
-                <p><strong>Email:</strong> 
-                    <input 
-                        className='editable_text' 
-                        type='text' value={user.email} 
-                        style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
-                        onChange={(e)=>setUser({...user, email: e.target.value })}
-                        /></p>
-
+                    <h1>General Information</h1>    
+                    <p><strong>User ID:</strong> 
+                    <span style={{display: "block", padding: "0px"}}>{user._id}</span> </p>
+                    <p><strong>First Name:</strong> 
+                        <input 
+                            className='editable_text' 
+                            type='text' value={user.firstName} 
+                            style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
+                            onChange={(e)=>setUser({...user, firstName: e.target.value })}
+                            /> </p>
+                    <p><strong>Middle Name:</strong> 
+                        <input 
+                            className='editable_text' 
+                            type='text' value={user.middleName} 
+                            style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
+                            onChange={(e)=>setUser({...user, middleName: e.target.value })}
+                            /></p>
+                    <p><strong>Last Name:</strong> 
+                        <input 
+                            className='editable_text' 
+                            type='text' value={user.lastName} 
+                            style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
+                            onChange={(e)=>setUser({...user, lastName: e.target.value })}
+                            /></p>
+                    <p><strong>Email:</strong> 
+                        <input 
+                            className='editable_text' 
+                            type='text' value={user.email} 
+                            style={{pointerEvents: isEditMode? "auto": "none", borderBottom: isEditMode? "1px solid white": "none"}}
+                            onChange={(e)=>setUser({...user, email: e.target.value })}
+                        />
+                    </p>
                 </div>
-                <div>
-                    <h1>Table History of Orders</h1>
-                </div>
+            </div>
         </div>
-
-        </div>
-
+        <OrderTabs email={user.email}/>
     </div>
 
 );
