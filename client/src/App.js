@@ -27,6 +27,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { LuLogOut } from "react-icons/lu";
+import EditProductPage from "./pages/EditProductPage";
 import CustomerOrdersPage from "./pages/CustomerOrdersPage";
 
 
@@ -43,11 +44,12 @@ const App  =() =>{
     {path: "/shopping-page", element: <ShoppingPage />, visibility: [UserType.CUSTOMER],icon: <FiShoppingBag color={iconColor} size={iconSize}/>},
     {path: "/cart", element: <CartPage />, visibility: [UserType.CUSTOMER],icon: <PiShoppingCartSimpleBold color={iconColor} size={iconSize}/>},
     {path: "/account-management", element: <AccountManagement />, visibility: [UserType.MERCHANT],icon: <MdOutlineManageAccounts color={iconColor} size={iconSize}/>},
-    {path: "/profile-page/:id", element: <ProfilePage />, visibility: [UserType.MERCHANT]},
+    {path: "/profile-page/:id", element: <ProfilePage />, visibility: ["no_nav",UserType.MERCHANT,UserType.CUSTOMER]},
     {path: "/order-fulfillment", element: <OrderFulfillment />, visibility: [UserType.MERCHANT],icon: <IoReceiptOutline color={iconColor} size={iconSize}/>},
     {path: "/product-listings", element: <ProductListingsPage />, visibility: [UserType.MERCHANT],icon: <MdFormatListBulleted color={iconColor} size={iconSize}/>},
     {path: "/sales-report", element: <SalesReport />, visibility: [UserType.MERCHANT],icon: <TbReport color={iconColor} size={iconSize}/>},
     {path: "/add-product", element: <AddProductPage />, visibility: [UserType.MERCHANT],icon: <IoIosAddCircleOutline color={iconColor} size={iconSize}/>},
+    {path: "/edit-product/:id", element: <EditProductPage />, visibility: ["no_nav",UserType.MERCHANT]},
     {path: "/customer-orders", element: <CustomerOrdersPage/>, visibility: [UserType.CUSTOMER],icon: <MdFormatListBulleted color={iconColor} size={iconSize}/>},
     {path: "/logout", element: <Navigate to="/"/>, visibility: ["all"], icon: <LuLogOut color={iconColor} size={"3.5ch"}/>},
     {path: "/*", element: <NoPage />, visibility: ["none"]},
@@ -67,7 +69,7 @@ const App  =() =>{
   return (
     <div className="App">
       <BrowserRouter>
-        {userType === UserType.GUEST? null : <NavBar onLogout={()=>setUserType(UserType.GUEST)} navBarItems = {routeList.filter(route=> route.visibility[0] !== "no_nav" && (route.visibility.includes("all") || route.visibility.includes(userType)) )}/>}
+        {userType && userType !== UserType.GUEST? <NavBar onLogout={()=>setUserType(UserType.GUEST)} navBarItems = {routeList.filter(route=> route.visibility[0] !== "no_nav" && (route.visibility.includes("all") || route.visibility.includes(userType)) )}/> : null}
         <div className="web_body">
           <Routes>
               {

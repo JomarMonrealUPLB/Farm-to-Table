@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: recoleta;
-  src: url("assets/fonts/Recoleta-RegularDEMO.otf") format("opentype");
+  src: url("assets/fonts/RecoletaAlt-Medium.ttf");
   }
 
 body {
@@ -89,4 +89,16 @@ button{
 .flexed_center{
   display: flex;
   justify-content: center;
+}
+
+.editable_text{
+  background-color: #00000000;
+  font-family: "Montserrat",sans-serif;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.editable_text:focus{
+  outline: none;
 }

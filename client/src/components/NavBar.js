@@ -22,8 +22,9 @@ const NavBar = (props) => {
                     onClick={(e) => {
                       setselectedIndex(index)
                     }}
+                    
                   >
-                   <div id={"nav_bar-selected-" + index} className={selectedIndex === index? "nav_bar-selected": "nav_bar-selected no_display"}></div>
+                   <div id={"nav_bar-selected-" + index} className={selectedIndex === index? "nav_bar-selected": "nav_bar-selected no_display"} title={navBarItem.path}></div>
                    {navBarItem.icon}
                   </li>
                 </Link>

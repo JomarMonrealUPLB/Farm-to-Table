@@ -1,11 +1,14 @@
 .profile_page-main-container{
     display: flex;
     flex-direction: row;
-
-
 }
 
 .profile-page-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     padding: 25px;
     margin-right: 5px;
     overflow: hidden;

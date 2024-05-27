@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductDisplay.css';
+import { ProductType } from '../constants/ProductType';
 
 const ProductDisplay = ({ name, image, description, type, price, quantity}) => {
   return (
@@ -11,7 +12,7 @@ const ProductDisplay = ({ name, image, description, type, price, quantity}) => {
 
             </div>
             <div className='product_display-card-int'>
-                <p>Type: {type} </p>
+                <p>Type: {ProductType.toString(parseInt(type))} </p>
                 <p>Price: P {price}/kg </p>
                 <p>Quantity: {quantity}</p>
             </div>

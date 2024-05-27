@@ -5,13 +5,13 @@ export class ProductType{
     static POULTRY = 3;
 
     static toString = (typeNumber) => {
-        if(typeNumber === 0){
+        if(typeNumber === 1){
             return "Fruit"
-        } else if (typeNumber === 1){
-            return "Vegetable"
         } else if (typeNumber === 2){
-            return "Herb"
+            return "Vegetable"
         } else if (typeNumber === 3){
+            return "Herb"
+        } else if (typeNumber === 4){
             return "Poultry"
         } else {
             return "Other"
