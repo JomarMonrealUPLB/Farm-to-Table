@@ -1,4 +1,4 @@
-const handleAddToCartClick = async (product) => {
+const handleAddToCartClick = async (product, qty) => {
     const userEmail = sessionStorage.getItem("userEmail")
   
     const result = await fetch(
@@ -14,7 +14,7 @@ const handleAddToCartClick = async (product) => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({quantity: result.quantity+1})
+          body: JSON.stringify({quantity: result.quantity+qty})
         }
       ).then(response => response.json())
       console.log(updateResult)

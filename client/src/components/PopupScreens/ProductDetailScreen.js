@@ -76,7 +76,7 @@ const ProductDetailScreen = (props) => {
         <div style={{display:"flex", justifyContent:"center"}}>
             
         <button className='product_item-button' 
-            onClick={()=>{if(product.quantity > 0) handleAddToCartClick(product)}} 
+            onClick={()=>{if(product.quantity > 0) handleAddToCartClick(product, productOrderCount)}} 
             style={{backgroundColor: product.quantity === 0? "#777777": "var(--primary-green-dark)" ,width:"50%"}}>
             <PiShoppingCartSimpleLight color={iconColor} size={'3ch'}/>
             {product.quantity === 0?  "Out of Stock" : "Add To Cart"}
