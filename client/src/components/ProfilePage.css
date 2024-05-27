@@ -1,6 +1,7 @@
 .profile_page-main-container{
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
 }
 
 .profile-page-left{
@@ -36,11 +37,10 @@
 }
 
 .profile-page-right div{
-    padding: 25px;
+    height: 100%;
+    padding: 25px;  
     border-radius: 10px;
     background-color: var(--primary-green);
-    margin-bottom: 10px;
-
 }
 
 .profile-page-gen-info, .profile-page-right h1{
