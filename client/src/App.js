@@ -28,7 +28,6 @@ import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { LuLogOut } from "react-icons/lu";
 import EditProductPage from "./pages/EditProductPage";
-import CustomerOrdersPage from "./pages/CustomerOrdersPage";
 
 
 
@@ -50,7 +49,6 @@ const App  =() =>{
     {path: "/sales-report", element: <SalesReport />, visibility: [UserType.MERCHANT],icon: <TbReport color={iconColor} size={iconSize}/>},
     {path: "/add-product", element: <AddProductPage />, visibility: [UserType.MERCHANT],icon: <IoIosAddCircleOutline color={iconColor} size={iconSize}/>},
     {path: "/edit-product/:id", element: <EditProductPage />, visibility: ["no_nav",UserType.MERCHANT]},
-    {path: "/customer-orders", element: <CustomerOrdersPage/>, visibility: [UserType.CUSTOMER],icon: <MdFormatListBulleted color={iconColor} size={iconSize}/>},
     {path: "/logout", element: <Navigate to="/"/>, visibility: ["all"], icon: <LuLogOut color={iconColor} size={"3.5ch"}/>},
     {path: "/*", element: <NoPage />, visibility: ["none"]},
   ]
