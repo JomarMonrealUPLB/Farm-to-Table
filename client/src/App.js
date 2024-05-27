@@ -18,15 +18,16 @@ import { UserType } from "./constants/UserType";
 import { iconColor, iconSize } from './constants/IconSize';
 
 import { LiaHomeSolid } from "react-icons/lia";
-import { LiaShoppingBagSolid } from "react-icons/lia";
+import { FiShoppingBag } from "react-icons/fi";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { IoReceiptOutline } from "react-icons/io5";
 import { MdFormatListBulleted } from "react-icons/md";
 import { TbReport } from "react-icons/tb";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { PiShoppingCartSimpleLight } from "react-icons/pi";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { LuLogOut } from "react-icons/lu";
+import CustomerOrdersPage from "./pages/CustomerOrdersPage";
 
 
 
@@ -39,14 +40,15 @@ const App  =() =>{
     {path: "/signup", element: <Signup />, visibility: ["no_nav","all"]},
     {path: "/admin-homepage", element: <AdminHomePage />, visibility: ["no_nav",UserType.MERCHANT]},
     {path: "/customer-homepage", element: <CustomerHomePage />, visibility: ["no_nav",UserType.CUSTOMER]},
-    {path: "/shopping-page", element: <ShoppingPage />, visibility: [UserType.CUSTOMER],icon: <LiaShoppingBagSolid color={iconColor} size={iconSize}/>},
-    {path: "/cart", element: <CartPage />, visibility: [UserType.CUSTOMER],icon: <PiShoppingCartSimpleLight color={iconColor} size={iconSize}/>},
+    {path: "/shopping-page", element: <ShoppingPage />, visibility: [UserType.CUSTOMER],icon: <FiShoppingBag color={iconColor} size={iconSize}/>},
+    {path: "/cart", element: <CartPage />, visibility: [UserType.CUSTOMER],icon: <PiShoppingCartSimpleBold color={iconColor} size={iconSize}/>},
     {path: "/account-management", element: <AccountManagement />, visibility: [UserType.MERCHANT],icon: <MdOutlineManageAccounts color={iconColor} size={iconSize}/>},
     {path: "/profile-page/:id", element: <ProfilePage />, visibility: [UserType.MERCHANT]},
     {path: "/order-fulfillment", element: <OrderFulfillment />, visibility: [UserType.MERCHANT],icon: <IoReceiptOutline color={iconColor} size={iconSize}/>},
     {path: "/product-listings", element: <ProductListingsPage />, visibility: [UserType.MERCHANT],icon: <MdFormatListBulleted color={iconColor} size={iconSize}/>},
     {path: "/sales-report", element: <SalesReport />, visibility: [UserType.MERCHANT],icon: <TbReport color={iconColor} size={iconSize}/>},
     {path: "/add-product", element: <AddProductPage />, visibility: [UserType.MERCHANT],icon: <IoIosAddCircleOutline color={iconColor} size={iconSize}/>},
+    {path: "/customer-orders", element: <CustomerOrdersPage/>, visibility: [UserType.CUSTOMER],icon: <MdFormatListBulleted color={iconColor} size={iconSize}/>},
     {path: "/logout", element: <Navigate to="/"/>, visibility: ["all"], icon: <LuLogOut color={iconColor} size={"3.5ch"}/>},
     {path: "/*", element: <NoPage />, visibility: ["none"]},
   ]
