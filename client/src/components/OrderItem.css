@@ -1,0 +1,11 @@
+.order-item{
+    background-color: rgba(255, 255, 255, 0.912);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);   
+}
+
+.order-item img{
+    width: 6ch;
+    height: 6ch;
+    margin-left: 4ch;
+    padding: 1ch;
+}

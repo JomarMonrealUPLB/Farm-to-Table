@@ -1,19 +1,18 @@
-table{
+.cart_table{
     width: 100%;
     margin-top: 30px;
     border-collapse: collapse;
 }
 
-tr{
+.cart_table-header tr,
+.cart_table-body tr{
     border-bottom: 1px solid black;
 }
 
-th{
+.cart_table-header th{
     text-align: left;
     font-size: 20px;
     padding-bottom: 10px;
-
-    /* border: 1px solid black; */
 }
 
 .header-label-product{
@@ -31,7 +30,7 @@ th{
 }
 
 
-td{
+.cart_table td{
     text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
