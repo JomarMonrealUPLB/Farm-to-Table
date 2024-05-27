@@ -20,6 +20,12 @@ const getOrdersWithStatusNumber = async (req, res) => {
     res.send(await Order.find({status: num}))
 }
 
+const getOrdersByEmail = async (req, res) => {
+    const result = await Order.find({email: req.query.email})
+    if (result) res.send(result)
+    else res.send({})
+}
+
 const createOrder = async (req, res) => {
     //validate order? (qty)
     const newOrder = new Order(
@@ -65,6 +71,7 @@ export {
     getOrderById, 
     getOrdersWithStatusNumber, 
     getPendingOrderByEmail,
+    getOrdersByEmail,
     createOrder, 
     updateOrder, 
     deleteOrder,
