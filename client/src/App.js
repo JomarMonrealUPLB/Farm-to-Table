@@ -76,7 +76,7 @@ const App  =() =>{
                 )
               }
           </Routes>
-          <img className="page_background_decor" src={background}/>
+          {/* <img className="page_background_decor" src={background}/> */}
         </div>
     </BrowserRouter>
     </div>

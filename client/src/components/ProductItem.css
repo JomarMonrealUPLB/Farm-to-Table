@@ -1,7 +1,11 @@
 .product_item{
+    background-color: rgba(255, 255, 255, 0.912);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);   
+
     width: 20ch;
     height: 20ch;
-    padding: 5ch;
+    padding: 6ch 5ch 3ch 5ch;
+    margin-bottom: 3ch;
 
     display: flex;
     flex-direction: column;
@@ -33,7 +37,7 @@
 
 .product_item-button{
     width: 100%;
-    border-radius: 30px;
+    border-radius: 4px;
     margin-top: 15px;
 
     font-weight: bold;

@@ -55,7 +55,7 @@ const CartTable = ({cartData}) => {
         <thead className='cart_table-header'>
           <tr>
             <th className='header-label-product'>Product</th>
-            <th className='header-label-name'/>
+            <th className='header-label-name'>Name</th>
             <th className='header-label-price'> Price</th>
             <th className='header-label-qty'>Quantity</th>
             <th className='header-label-total'>Total</th>
