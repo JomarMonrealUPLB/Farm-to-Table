@@ -71,3 +71,20 @@
   ![image](https://github.com/JomarMonrealUPLB/Farm-to-Table/assets/112914563/95374c20-82ea-4f83-8a48-679eaf98135f)
 
 ### Admin View
+
+#### Admin Home Page
+
+- Include quick links to other apges
+  ![image](https://github.com/JomarMonrealUPLB/Farm-to-Table/assets/159239289/e8aeef82-666f-4dd0-8885-1f573fe6e15c)
+
+#### Account Management Page
+
+- Show all user accounts. Admin can view or delete them.
+  ![image](https://github.com/JomarMonrealUPLB/Farm-to-Table/assets/159239289/1f5b82e7-a4cd-442c-abfa-2eaf4e759c07)
+
+#### Order Fulfillment Page
+
+- Show all pending orders. Admin can view, cancel, or fulfill them.
+  ![image](https://github.com/JomarMonrealUPLB/Farm-to-Table/assets/159239289/343d10fa-e787-4eaf-a1ed-dc5eacc55306)
+
+
