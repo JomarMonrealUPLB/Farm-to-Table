@@ -14,15 +14,16 @@ const AddProductPage = () => {
     const [type, setType] = useState('1');
     const [price, setPrice] = useState('-');
     const [quantity, setQuantity] = useState('0');
+    const [existingProducts, setExistingProducts] = useState([])
+
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
 
-        const existingProduct = dummyProducts.find((user) => user.name === name);
 
-        if (existingProduct) {
-        alert('Product already exists. ');
-        return;
+        if (existingProducts.find(product=>product.name === name)) {
+            alert('Product already exists. ');
+            return;
         }
 
         const newProduct = {
@@ -60,6 +61,16 @@ const AddProductPage = () => {
         
     
       }
+
+    useEffect(() => {
+        fetch("http://localhost:3000/products")
+          .then((response) => response.json())
+          .then((data) => {
+            setExistingProducts(data)
+          })
+          .catch((error) => console.error("Error fetching products:", error));
+
+    }, []);
 
     
     return (
