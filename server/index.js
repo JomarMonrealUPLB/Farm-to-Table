@@ -8,9 +8,10 @@ import userRouter from './routers/user_routes.js';
 import productRouter from './routers/product_routes.js';
 import orderRouter from './routers/order_routes.js';
 import authRouter from './routers/auth_routes.js';
+import { mongoDatabase } from './database.js';
 const app = express();
 
-await mongoose.connect("mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrhdl.mongodb.net/Farm-to-Table",{useNewUrlParser: true, useUnifiedTopology: true})
+await mongoose.connect("mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrhdl.mongodb.net/" + mongoDatabase,{useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log('App connected to database');
     app.listen(3000,() => console.log("Server is now running at port 3000..."));
@@ -29,7 +30,7 @@ app.use(session({
   saveUninitialized: false,
   store: MongoStore.create({
     clear_interval: 3600, 
-    mongoUrl: "mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrhdl.mongodb.net/Farm-to-Table",
+    mongoUrl: "mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrhdl.mongodb.net/" + mongoDatabase,
     ttl: 3600
   }),
   cookie:{
