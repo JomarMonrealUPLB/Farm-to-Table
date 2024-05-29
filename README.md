@@ -96,6 +96,8 @@
 #### Product Listings Page
 
 - Show all products on sale. Admin can view, edit, or delete them.
+  ![image](https://github.com/JomarMonrealUPLB/Farm-to-Table/assets/159239289/40a116c8-3f4c-485d-9245-dcfd56d19bea)
+
 
 #### Sales Report Page
 
