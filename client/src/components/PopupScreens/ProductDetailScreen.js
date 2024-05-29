@@ -68,7 +68,7 @@ const ProductDetailScreen = (props) => {
                         color='var(--primary-green)' 
                         cursor={"pointer"} 
                         onClick={()=>{
-                            setProductOrderCount(productOrderCount=>productOrderCount+1)
+                            setProductOrderCount(productOrderCount=> productOrderCount < product.quantity? productOrderCount+1: productOrderCount)
                         }}
                     />
                 </div>
