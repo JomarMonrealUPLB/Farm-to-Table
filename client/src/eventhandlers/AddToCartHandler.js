@@ -25,7 +25,7 @@ const handleAddToCartClick = async (product, qty) => {
     else{
       const newOrder = {
         productID: product._id,
-        quantity: 1,
+        quantity: qty,
         status: 0,
         email: userEmail,
         date: new Date().toISOString()
