@@ -1,0 +1,31 @@
+.product_detail_screen{
+    width: 100%;
+    padding: 1ch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.product_detail_screen-image{
+    height: 40%;
+    object-fit: contain;
+}
+
+.product_detail_screen-carousel{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+.product_detail_stat{
+    width: 40%;
+    padding-left: 10%;
+    font-size: 16px;
+}
+
+.product_detail_order{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 40%;
+}

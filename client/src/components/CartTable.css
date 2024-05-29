@@ -1,0 +1,78 @@
+.cart_table{
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.cart_table-header th{
+    text-align: left;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.header-label-product{
+    padding-left: 4ch;
+    width: 25%;
+}
+
+.header-label-name{
+    width: 30%;
+}
+
+.header-label-qty,
+.header-label-price,
+.header-label-total{
+    width: 15%;
+}
+
+.cart_table-row-img img{
+    width: 6ch;
+    height: 6ch;
+    padding: 1ch;
+    padding-left: 6ch;
+}
+
+.cart_table-row{
+    background-color: rgba(255, 255, 255, 0.912);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);   
+}
+
+.cart_table-row-button{
+    border-radius: 4px;
+    margin-top: 5px;
+    background-color: var(--secondary-red);
+}
+
+.cart_table-row-button:hover{
+    background-color: var(--secondary-red-hover);
+}
+
+.cart_table-row-qty input{
+    height: 4ch;
+    width: 50%;
+    text-align: center;
+    border-width: 1.5px;
+    border-radius: 4px;
+    font-family: "Montserrat",sans-serif;
+}
+
+.footer-label-subtotal{
+    font-size: 18px;
+}
+
+.footer-subtotal-value{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer-button-checkout{
+    border-radius: 4px;
+    height: 5ch;
+    width: 100%;
+}
+
+.footer-button-checkout:hover{
+    background-color: var(--primary-green-dark-hover);
+}
+

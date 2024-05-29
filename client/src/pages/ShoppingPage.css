@@ -1,0 +1,12 @@
+.shopping_page_dropdowns{
+    display: flex;
+    align-items: center;
+}
+
+.shopping_page-products{
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

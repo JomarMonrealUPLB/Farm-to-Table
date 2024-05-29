@@ -1,0 +1,26 @@
+/*for popup css*/
+
+.whole_screen{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.popup{
+    overflow: scroll;
+    scrollbar-width: none;
+    display: flex;
+    justify-content: space-around;
+    z-index: 20;
+}
+
+.popup h2{
+    font-size: 30px;
+}

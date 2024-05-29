@@ -1,15 +1,24 @@
 :root{
   --primary-green: #4F6F52;
+  --primary-green-hover: #234d28;
+  --primary-green-dark: #1A4D2E;
+  --primary-green-dark-hover: #052512;
+  --primary-background: #F5EFE6;
+  --secondary-background: #E8DFCA;
+  --secondary-red: #A81D44;
+  --secondary-red-hover: #5c1126;
 }
 
 @font-face {
   font-family: recoleta;
-  src: url("assets/fonts/Recoleta-RegularDEMO.otf") format("opentype");
+  src: url("assets/fonts/RecoletaAlt-Medium.ttf");
   }
 
 body {
   margin: 0;
+  font-size: 14px;
   font-family: "Montserrat",sans-serif;
+  background-color: var(--primary-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -18,6 +27,7 @@ h1{
   font-family: recoleta;
   font-size: 28px;
   margin: 0;
+  color: var(--primary-green-dark);
 }
 
 ul{
@@ -37,13 +47,58 @@ a{
   display: none;
 }
 
-
+hr{
+  border-width: 1px;
+  border-color: var(--primary-green-dark);
+}
 
 .web_body{
   display: flex;
+  width: 100%;
 }
 
 .page{
   padding: 3em;
+  width: 100%;
 }
 
+button{
+  font-family: "Montserrat",sans-serif;
+  color: white;
+  background-color: var(--primary-green-dark);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 1ch;
+  cursor: pointer;
+}
+
+
+.page_background_decor{
+  position: fixed;
+  z-index: -100;
+  bottom: -20%;
+  width: 100%;
+  opacity: 0.3;
+}
+
+.App{
+  display: flex;
+}
+
+.flexed_center{
+  display: flex;
+  justify-content: center;
+}
+
+.editable_text{
+  background-color: #00000000;
+  font-family: "Montserrat",sans-serif;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.editable_text:focus{
+  outline: none;
+}
