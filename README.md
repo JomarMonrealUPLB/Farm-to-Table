@@ -40,6 +40,16 @@
      - Email: "merchant@example.com"
      - Password: "12345678"
 
+## New/Existing Database Usage
+
+1. Navigate to the server folder
+
+2. Find the database.js file
+   
+3. To use a blank database, comment out the first line
+   
+4. To use the existing database, comment out the second line
+
 ## Website Specifications
 
 ### Login Page
@@ -108,5 +118,3 @@
 
 - Admin can add new products here.
   ![image](https://github.com/JomarMonrealUPLB/Farm-to-Table/assets/159239289/7f8b26c2-f87f-4eb4-9191-f4e15fd229a3)
-
-
