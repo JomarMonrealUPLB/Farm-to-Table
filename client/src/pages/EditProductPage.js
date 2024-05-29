@@ -7,26 +7,20 @@ import '../components/AddProduct.css';
 import { useParams } from 'react-router-dom';
 
 const EditProductPage = () => {
+    const [currentProduct, setCurrentProduct] = useState(null);
     const {id} = useParams();
     const dummyProducts = products;
 
-    const [currentProduct, setCurrentProduct] = useState(null);
     const [name, setName] = useState('Product Name');
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('The description of the product.');
     const [type, setType] = useState('1');
     const [price, setPrice] = useState('-');
     const [quantity, setQuantity] = useState('0');
+    const [existingProducts, setExistingProducts] = useState([])
 
-    const handleAddProduct = async (e) => {
+    const handleEditProduct = async (e) => {
         e.preventDefault();
-
-        const existingProduct = dummyProducts.find((user) => user.name === name);
-
-        if (existingProduct) {
-        alert('Product already exists. ');
-        return;
-        }
 
         const newProduct = {
             name: name,
@@ -65,6 +59,14 @@ const EditProductPage = () => {
       }
     
     useEffect(() => {
+
+        fetch("http://localhost:3000/products")
+          .then((response) => response.json())
+          .then((data) => {
+            setExistingProducts(data)
+          })
+          .catch((error) => console.error("Error fetching products:", error));
+
         fetch(`http://localhost:3000/products/${id}`)
         .then(response => response.json())
         .then(body => {
@@ -94,7 +96,7 @@ const EditProductPage = () => {
 
                 <div className='add_product-main'>
                     <h1>Edit Product</h1>
-                    <form className='add_product-form' onSubmit={handleAddProduct}>
+                    <form className='add_product-form' onSubmit={handleEditProduct}>
                         <div>
                             <label>Name </label>
                             <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
