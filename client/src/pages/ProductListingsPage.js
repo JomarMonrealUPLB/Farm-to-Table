@@ -13,7 +13,7 @@ import Popup from "../components/Popup.js"
 import ViewProductScreen from '../components/PopupScreens/ViewProductScreen'
 
 const ProductListingsPage = () => {
-    const [productList, setproductList] = useState(products)
+    const [productList, setProductList] = useState(products)
     const [originalSerializedProductList, setOriginalSerializedProductList] = useState([])
     const [serializedProductList, setserializedProductList] = useState([])
     const [currentProduct, setCurrentProduct] = useState()
