@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import {users} from '../assets/dummy_data/users'
-
 import TitleCard from '../components/TitleCard'
 import '../components/Signup.css';
 
 const Signup = () => {
-  const dummyUsers = users;
-
+  const [users, setUsers] = useState([])
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -16,12 +12,17 @@ const Signup = () => {
   const navigate = useNavigate();
   
   const [confirmPassword,setConfirmPassword] = useState('');
-  
 
+  useEffect(() => {
+    fetch( 'http://localhost:3000/users')
+    .then(response => response.json())
+    .then(data => setUsers(data))
+  }, [])
+  
   const handleSignup = async (e) => {
     e.preventDefault();
-
-    const existingUser = dummyUsers.find((user) => user.email === email);
+    
+    const existingUser = users.find((user) => user.email === email);
     if (existingUser) {
       alert('Email already exists. Please use a different email.');
       return;
