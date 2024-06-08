@@ -14,7 +14,7 @@ const ProfilePage = () => {
     const [isEditMode, setIsEditMode] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/users/${id}`)
           .then(response => response.json())
           .then(body => {
             console.log(body);
@@ -35,7 +35,7 @@ return(
                     <button onClick={()=>{
                             setIsEditMode(!isEditMode)
                             if(isEditMode){
-                                fetch(`http://localhost:3000/users/${id}`,
+                                fetch(`${process.env.REACT_APP_API_URL}/users/${id}`,
                                     {
                                         method:"PATCH",
                                         headers: {

@@ -13,14 +13,14 @@ import handleOrderFulfillmentClick from '../eventhandlers/OrderFulfillmentHandle
 
 const getProductName = async (id) => {
     const result = await fetch(
-        `http://localhost:3000/products/${id}`
+        `${process.env.REACT_APP_API_URL}/products/${id}`
     ).then(response => response.json())
     return result.name
 }
 
 const getProduct = async (id) => {
     const result = await fetch(
-        `http://localhost:3000/products/${id}`
+        `${process.env.REACT_APP_API_URL}/products/${id}`
     ).then(response => response.json())
     return result
 }
@@ -53,7 +53,7 @@ const OrderFulfillment = () => {
     ]
 
     useEffect(() => {
-        fetch('http://localhost:3000/orders')
+        fetch(process.env.REACT_APP_API_URL+ '/orders')
         .then(response => response.json())
         .then(body => {
             setOrderList(body)

@@ -32,7 +32,7 @@ const EditProductPage = () => {
           };
         
         //add new product to database
-        fetch(`http://localhost:3000/products/${id}`,
+        fetch(`${process.env.REACT_APP_API_URL}/products/${id}`,
         {
         method: 'PATCH',
         headers: {
@@ -60,14 +60,14 @@ const EditProductPage = () => {
     
     useEffect(() => {
 
-        fetch("http://localhost:3000/products")
+        fetch(process.env.REACT_APP_API_URL+ "/products")
           .then((response) => response.json())
           .then((data) => {
             setExistingProducts(data)
           })
           .catch((error) => console.error("Error fetching products:", error));
 
-        fetch(`http://localhost:3000/products/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/products/${id}`)
         .then(response => response.json())
         .then(body => {
             setCurrentProduct(body);

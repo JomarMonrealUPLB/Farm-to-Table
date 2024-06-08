@@ -20,7 +20,7 @@ const Login = (props) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const userRaw = await fetch("http://localhost:3000/auth",{
+    const userRaw = await fetch(process.env.REACT_APP_API_URL+ "/auth",{
       credentials: "include",
       method: 'POST',
       headers: {

@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import cors from "cors";
 import MongoStore from 'connect-mongo';
+import { config } from 'dotenv';
 
 import userRouter from './routers/user_routes.js';
 import productRouter from './routers/product_routes.js';
@@ -10,6 +11,8 @@ import orderRouter from './routers/order_routes.js';
 import authRouter from './routers/auth_routes.js';
 import { mongoDatabase } from './database.js';
 const app = express();
+
+config();
 
 await mongoose.connect("mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrhdl.mongodb.net/" + mongoDatabase,{useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
@@ -21,7 +24,7 @@ await mongoose.connect("mongodb+srv://jpmonreal:ePnitzGp8hf36YmA@ftcluster.uuvrh
   });
 
   
-app.use(cors({origin: "http://localhost:3001",methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE", "PATCH"] ,credentials: true}))
+app.use(cors({origin: [process.env.CLIENT_URL],methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE", "PATCH"] ,credentials: true}))
 app.use(express.json())
 
 app.use(session({
@@ -45,3 +48,5 @@ authRouter(app)
 productRouter(app)
 userRouter(app)
 orderRouter(app)
+
+export default app

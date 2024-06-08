@@ -15,7 +15,7 @@ const AccountManagement = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3000/users')
+        fetch(process.env.REACT_APP_API_URL+ '/users')
           .then(response => response.json())
           .then(body => {
             console.log(body);
@@ -24,7 +24,7 @@ const AccountManagement = () => {
       },[]);
     
     const handleDelete = (user_id)=> {
-        fetch(`http://localhost:3000/users/${user_id}`,
+        fetch(`${process.env.REACT_APP_API_URL}/users/${user_id}`,
       {
         credentials: 'include',
         method: 'DELETE',

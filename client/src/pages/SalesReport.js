@@ -33,7 +33,7 @@ const SalesReport = () => {
     ]
 
     useEffect(() => {
-        fetch('http://localhost:3000/orders/status/2')
+        fetch(process.env.REACT_APP_API_URL+ '/orders/status/2')
         .then(response => response.json())
         .then(body => {
             setOrderList(body)
@@ -46,7 +46,7 @@ const SalesReport = () => {
           const tempOrderList = []
           const promises = orderList.map(order => {
             const promise = fetch(
-              `http://localhost:3000/products/${order.productID}`
+              `${process.env.REACT_APP_API_URL}/products/${order.productID}`
             ).then(response => response.json()).then(body=> {tempOrderList.push({...order, product: body})})
             return promise
           });

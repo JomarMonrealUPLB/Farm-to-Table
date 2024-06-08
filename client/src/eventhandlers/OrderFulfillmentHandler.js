@@ -1,6 +1,6 @@
 const handleOrderFulfillmentClick = async (order, updateType) => {
     const result = await fetch(
-        `http://localhost:3000/orders/${order._id}`,
+        `${process.env.REACT_APP_API_URL}/orders/${order._id}`,
         {
             method: 'PATCH',
             headers: {
@@ -16,14 +16,14 @@ const handleOrderFulfillmentClick = async (order, updateType) => {
     }
     
     let product = null
-    await fetch(`http://localhost:3000/products/${order.productID}`).then(response=>response.json()).then(body=>product=body)
+    await fetch(`${process.env.REACT_APP_API_URL}/products/${order.productID}`).then(response=>response.json()).then(body=>product=body)
 
     if(order.quantity > product.quantity){
       alert("Can't fulfill order due to insufficient stock")
       return "error"
     }
 
-    await fetch(`http://localhost:3000/products/${order.productID}`,
+    await fetch(`${process.env.REACT_APP_API_URL}/products/${order.productID}`,
         {
           credentials: 'include',
           method: 'PATCH',

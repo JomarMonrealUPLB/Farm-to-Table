@@ -46,7 +46,7 @@ const ProductListingsPage = () => {
     ]
 
       const deleteProduct = (productId) => {
-        fetch(`http://localhost:3000/products/${productId}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const ProductListingsPage = () => {
       };
     
       useEffect(() => {
-        fetch("http://localhost:3000/products")
+        fetch(process.env.REACT_APP_API_URL+ "/products")
           .then((response) => response.json())
           .then((data) => {
             setProductList(data);

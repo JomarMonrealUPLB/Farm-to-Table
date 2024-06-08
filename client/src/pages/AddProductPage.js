@@ -36,7 +36,7 @@ const AddProductPage = () => {
           };
         
         //add new product to database
-        fetch('http://localhost:3000/products',
+        fetch(process.env.REACT_APP_API_URL+ '/products',
         {
         method: 'POST',
         headers: {
@@ -63,7 +63,7 @@ const AddProductPage = () => {
       }
 
     useEffect(() => {
-        fetch("http://localhost:3000/products")
+        fetch(process.env.REACT_APP_API_URL+ "/products")
           .then((response) => response.json())
           .then((data) => {
             setExistingProducts(data)

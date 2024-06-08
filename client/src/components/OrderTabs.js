@@ -5,14 +5,14 @@ import Header from './Header'
 
 const getProductName = async (id) => {
     const result = await fetch(
-        `http://localhost:3000/products/${id}`
+        `${process.env.REACT_APP_API_URL}/products/${id}`
     ).then(response => response.json())
     return result.name
 }
 
 const getProductImage = async (id) => {
     const result = await fetch(
-        `http://localhost:3000/products/${id}`
+        `${process.env.REACT_APP_API_URL}/products/${id}`
     ).then(response => response.json())
     return result.image
 }
@@ -23,7 +23,7 @@ const OrderTabs = ({email}) => {
     const [activeTab, setActiveTab] = useState(1)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/orders-by-email?email=${email}`)
+        fetch(`${process.env.REACT_APP_API_URL}/orders-by-email?email=${email}`)
         .then(response => response.json())
         .then(data => setOrders(data))
     }, [email])

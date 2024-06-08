@@ -14,7 +14,7 @@ const Signup = () => {
   const [confirmPassword,setConfirmPassword] = useState('');
 
   useEffect(() => {
-    fetch( 'http://localhost:3000/users')
+    fetch( process.env.REACT_APP_API_URL+ '/users')
     .then(response => response.json())
     .then(data => setUsers(data))
   }, [])
@@ -46,7 +46,7 @@ const Signup = () => {
     };
 
     //add new user
-    fetch('http://localhost:3000/users',
+    fetch(process.env.REACT_APP_API_URL+ '/users',
       {
         method: 'POST',
         headers: {

@@ -16,7 +16,7 @@ const CartTable = ({cartData}) => {
   
 
   useEffect(() => {
-    fetch('http://localhost:3000/orders/status/0')
+    fetch(process.env.REACT_APP_API_URL+ '/orders/status/0')
           .then(response => response.json())
           .then(body => {
               setOrders(body)
@@ -29,7 +29,7 @@ const CartTable = ({cartData}) => {
       const tempCart = []
       const promises = orders.map(order => {
         const promise = fetch(
-          `http://localhost:3000/products/${order.productID}`
+          `${process.env.REACT_APP_API_URL}/products/${order.productID}`
         ).then(response => response.json()).then(body=> {tempCart.push({...order, product: body})})
         return promise
       });
@@ -76,7 +76,7 @@ const CartTable = ({cartData}) => {
                       [...cartItems.slice(0,index),
                       ...cartItems.slice(index+1, cartItems.length)]
                     )
-                    fetch(`http://localhost:3000/orders/${cartItem._id}`,
+                    fetch(`${process.env.REACT_APP_API_URL}/orders/${cartItem._id}`,
                         {
                           method: 'DELETE',
                           headers: {
@@ -107,7 +107,7 @@ const CartTable = ({cartData}) => {
 
                       const temp = {...cartItems[index], quantity: currentValue}
 
-                      fetch(`http://localhost:3000/orders/${cartItem._id}`,
+                      fetch(`${process.env.REACT_APP_API_URL}/orders/${cartItem._id}`,
                       {
                         credentials: 'include',
                         method: 'PATCH',
@@ -150,7 +150,7 @@ const CartTable = ({cartData}) => {
             <td><button className='footer-button-checkout' onClick={async ()=>{
 
               const orderPromises = cartItems.map(async cartItem=>{
-                return fetch(`http://localhost:3000/orders/${cartItem._id}`,
+                return fetch(`${process.env.REACT_APP_API_URL}/orders/${cartItem._id}`,
                 {
                   credentials: 'include',
                   method: 'PATCH',

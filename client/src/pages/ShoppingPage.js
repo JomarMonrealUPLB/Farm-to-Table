@@ -66,7 +66,7 @@ const ShoppingPage = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:3000/products')
+    fetch(process.env.REACT_APP_API_URL+ '/products')
     .then(response => response.json())
     .then(body => {setProductList(body)})
   }, [])

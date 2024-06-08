@@ -2,13 +2,13 @@ const handleAddToCartClick = async (product, qty) => {
     const userEmail = sessionStorage.getItem("userEmail")
   
     const result = await fetch(
-      `http://localhost:3000/pending-order?email=${userEmail}&productID=${product._id}`
+      `${process.env.REACT_APP_API_URL}/pending-order?email=${userEmail}&productID=${product._id}`
     ).then(response => response.json())
   
     //order exists
     if(result._id){
       const updateResult = await fetch(
-        `http://localhost:3000/orders/${result._id}`,
+        `${process.env.REACT_APP_API_URL}/orders/${result._id}`,
         {
           method: 'PATCH',
           headers: {
@@ -32,7 +32,7 @@ const handleAddToCartClick = async (product, qty) => {
       }
   
       const insertResult = await fetch(
-        `http://localhost:3000/orders`,
+        `${process.env.REACT_APP_API_URL}/orders`,
         {
           method: 'POST',
           headers: {
