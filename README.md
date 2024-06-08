@@ -2,6 +2,8 @@
 
 "Farm-to-table" means a social movement emphasizing a direct link between consumers and farmers as the source of food.
 
+Visit https://farm-to-table.vercel.app/ to view the website.
+
 ## How to run the website?
 
 1. Clone this repository https://github.com/JomarMonrealUPLB/Farm-to-Table.git in your local directory.
